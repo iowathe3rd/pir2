@@ -1,6 +1,7 @@
-import {Box, Container} from '@mui/material';
+import { Box } from '@mui/material';
 import React, { PropsWithChildren } from 'react';
 import Header from './Header';
+import Footer from './Footer';
 
 
 const MainLayout: React.FC<PropsWithChildren> = ({children}) => {
@@ -9,9 +10,10 @@ const MainLayout: React.FC<PropsWithChildren> = ({children}) => {
       fontFamily: "Inter"
     }}>
       <Header/>
-      <Container component={'main'}>
-        {children}
-      </Container>
+      <main>
+      {children}
+      </main>
+      <Footer/>
     </Box>
   )
 }
