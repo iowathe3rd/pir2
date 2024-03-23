@@ -1,11 +1,10 @@
-import { createTheme } from '@mui/material';
+import { createTheme } from "@mui/material";
 import { red } from "@mui/material/colors";
-import InterRegular from '../assets/fonts/Inter-Regular.ttf';
 
 export const theme = createTheme({
   palette: {
     primary: {
-      main: "#1A8ED5",
+      main: "#ED801B",
     },
     error: {
       main: red.A400,
@@ -20,26 +19,7 @@ export const theme = createTheme({
       xl: 1536,
     },
   },
-  // typography: {
-  //   "fontFamily": `"Inter"`,
-  //   "fontSize": 14,
-  //   "fontWeightLight": 300,
-  //   "fontWeightRegular": 400,
-  //   "fontWeightMedium": 500
-  // },
   components: {
-    // MuiCssBaseline: {
-    //   styleOverrides: `
-    //     @font-face {
-    //       font-family: 'Inter';
-    //       font-style: normal;
-    //       font-display: swap;
-    //       font-weight: 400;
-    //       src: local('Inter'), local('Inter-Regular'), url(${InterRegular}) format('ttf');
-    //       unicodeRange: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF;
-    //     }
-    //   `,
-    // },
     MuiButton: {
       defaultProps: {
         // The props to change the default for.
@@ -56,25 +36,41 @@ export const theme = createTheme({
           // For specific variant
           ...(ownerState.variant === "outlined" &&
             ownerState.color === "primary" && {
-            minWidth: "220px",
-            minHeight: "50px",
-            borderWidth: "2px",
-            "&:hover": {
+              minWidth: "220px",
+              minHeight: "50px",
               borderWidth: "2px",
-            },
-          }),
+              "&:hover": {
+                borderWidth: "2px",
+              },
+            }),
           ...(ownerState.variant === "contained" &&
             ownerState.color === "primary" && {
-            minWidth: "220px",
-            minHeight: "50px",
-            backgroundColor: "#ED801B",
-            "&:active": {
-              boxShadow:
-                "4px 8px 15px rgba(0, 0, 0, 0.20) inset",
-            },
-          }),
+              color: "white",
+              minWidth: "220px",
+              minHeight: "50px",
+              backgroundColor: "#ED801B",
+              backgroundImage:
+                "linear-gradient(180deg, #ED801B 0%, #ED801B 100%)",
+              "&:hover": {
+                boxShadow: "none",
+                backgroundImage: "none",
+                backgroundColor: "#ED801B",
+              },
+              "&:active": {
+                boxShadow: "4px 8px 15px rgba(0, 0, 0, 0.20) inset",
+              },
+            }),
         }),
       },
-    }
+    },
+    MuiContainer: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          [theme.breakpoints.up("lg")]: {
+            maxWidth: "1536px",
+          },
+        }),
+      },
+    },
   },
 });

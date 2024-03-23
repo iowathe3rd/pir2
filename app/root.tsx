@@ -3,11 +3,11 @@ import { unstable_useEnhancedEffect as useEnhancedEffect } from "@mui/material";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { HeadersFunction, LinksFunction } from "@remix-run/node";
 import {
-    Links,
-    Meta,
-    Outlet,
-    Scripts,
-    ScrollRestoration,
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
 } from "@remix-run/react";
 import * as React from "react";
 import ClientStyleContext from "./context/ClientStyleContext";
@@ -15,11 +15,10 @@ import { default as Layout } from "./layouts/main/MainLayout";
 import { theme } from "./lib/mui";
 import Styles from "./tailwind.css?url";
 
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 
 interface DocumentProps {
   children: React.ReactNode;
@@ -95,17 +94,16 @@ export function ErrorBoundary({ error }: { error: Error }) {
 
   return (
     <Document title="Error!">
-      <Layout>
-        <div>
-          <h1>There was an error</h1>
-          <p>{String(error)}</p>
-          <hr />
-          <p>
-            Hey, developer, you should replace this with what you want your
-            users to see.
-          </p>
-        </div>
-      </Layout>
+      <div>
+        <h1>There was an error</h1>
+        <p>{String(error)}</p>
+        <hr />
+        <p>
+          Hey, developer, you should replace this with what you want your users
+          to see.
+        </p>
+      </div>
+      s
     </Document>
   );
 }

@@ -1,35 +1,46 @@
-import { Link, Typography } from "@mui/material";
-import Logo from "../../assets/logo.png";
-import React from "react";
-import Button from "~/components/common/Button";
+import { Button, Toolbar, Typography } from "@mui/material";
+import logo from "~/assets/logo.png";
 import Container from "~/components/common/Container";
-
-const Header: React.FC = () => {
+export default function Header() {
   return (
-    <Container
-      component={"header"}
+    <Toolbar
+      component="nav"
       sx={{
+        backgroundColor: "white",
         height: "120px",
-        display: "flex",
-        alignItems: "center",
-        background: "white",
       }}
     >
-      <Link className="lg:w-1/3">
-        <img src={Logo} alt="abbex" />
-      </Link>
-      <Typography variant="h6" fontWeight={700} className="lg:w-full">
-        Устройство плоских кровель с применением огнестойкого утеплителя нового
-        полколения ПИР
-      </Typography>
-      <div className="flex lg:gap-[26px] lg:w-1/3">
-        <Button rounded='lg' size="large" variant="text">+7 (705) 575-60-75</Button>
-        <Button rounded='lg' size="large" variant="contained" color="primary">
-          Заказать теплорасчет
-        </Button>
-      </div>
-    </Container>
+      <Container
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: "15px",
+        }}
+      >
+        <img src={logo} alt="logo" width={200} />
+        <Typography
+          variant="h6"
+          component="span"
+          lineHeight={"27px"}
+          className="w-2/4"
+          sx={{
+            display: {
+              xs: "none",
+              xl: "block",
+            },
+          }}
+        >
+          Устройство плоских кровель с применением огнестойкого утеплителя
+          нового полколения ПИР
+        </Typography>
+        <div className="flex grow items-center">
+          <Button>+7 (705) 575-60-75</Button>
+          <Button color="primary" variant="contained">
+            Заказать теплорасчет
+          </Button>
+        </div>
+      </Container>
+    </Toolbar>
   );
-};
-
-export default Header;
+}
