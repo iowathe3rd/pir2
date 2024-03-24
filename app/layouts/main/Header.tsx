@@ -39,7 +39,10 @@ export default function Header() {
         </Typography>
         <Box
           sx={{
-            display: "flex",
+            display: {
+              xs: "none",
+              lg: "flex",
+            },
             justifyContent: "flex-end",
             alignItems: "center",
             flexGrow: "1",

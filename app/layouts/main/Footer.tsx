@@ -9,115 +9,38 @@ import {
 } from "@mui/material";
 import { Link } from "@remix-run/react";
 import React from "react";
-import instagram from "~/assets/icons/instagram.svg";
-import location from "~/assets/icons/location.png";
-import mail from "~/assets/icons/mail.png";
-import phone from "~/assets/icons/phone.svg";
-import tiktok from "~/assets/icons/tiktok.svg";
-import whatsapp from "~/assets/icons/whatsapp.svg";
-import youtube from "~/assets/icons/youtube.svg";
-import logo from "~/assets/logo.png";
-
 import Container from "~/components/common/Container";
+import Logo from "~/components/common/Logo";
+
+import { footer as data } from "~/data";
 
 // Типизация для данных в футере
-interface FooterLink {
+export interface FooterLink {
   label: string;
   href?: string;
   target?: string;
 }
 
-interface FooterColumn {
+export interface FooterColumn {
   title: string;
   links: {
-    icon?: React.ReactNode;
+    icon?: string;
     link: FooterLink[] | FooterLink;
   }[];
 }
 
-// Данные для футера
-const footerData: FooterColumn[] = [
-  {
-    title: "КОНТАКТЫ",
-    links: [
-      {
-        icon: <img alt="phone" src={phone} />,
-        link: [
-          { label: "+7 (771) 741-18-22", href: "tel:+77717411822" },
-          { label: "+7 (771) 741-18-44", href: "tel:+77717411844" },
-        ],
-      },
-      {
-        icon: <img alt="mail" src={mail} />,
-        link: {
-          label: "sales@abbex.kz",
-          href: "mailto:sales@abbex.kz",
-        },
-      },
-      {
-        icon: <img alt="location" src={location} />,
-        link: [
-          {
-            label: "г.Алматы, ул. Нурмакова 1А",
-            href: "https://go.2gis.com/rhac4",
-            target: "_blank",
-          },
-          {
-            label: "г.Алматы, ул. Розыбакиева 72А",
-            href: "https://go.2gis.com/8228i",
-            target: "_blank",
-          },
-        ],
-      },
-    ],
-  },
-];
-
-// Данные для иконок социальных сетей
-const socialIcons = [
-  {
-    src: instagram,
-    href: "https://www.instagram.com/proaqua.kz/",
-    alt: "Instagram",
-    title: "Instagram",
-  },
-  // { path: "/assets/icons/telegram.svg" },
-  {
-    src: tiktok,
-    href: "https://www.tiktok.com/@abbex.kz",
-    alt: "TicTok",
-    title: "TikTok",
-  },
-  {
-    src: whatsapp,
-    href: "https://wa.me/+77717411822",
-    alt: "Whatsapp",
-    title: "Whatsapp",
-  },
-  {
-    src: youtube,
-    href: "https://www.youtube.com/@abbex2289",
-    alt: "Youtube",
-    title: "Youtube",
-  },
-];
-
-// Компонент логотипа
-const LogoComponent: React.FC = () => {
-  return (
-    <div className={"mb-7 flex flex-row items-center justify-center"}>
-      <Box>
-        <img src={logo} alt="Логотип" title="Логотип" />
-      </Box>
-    </div>
-  );
-};
+export interface SocialIcons {
+  src: string;
+  href: string;
+  alt: string;
+  title: string;
+}
 
 // Компонент для отображения элемента списка ссылок
 const LinkItem: React.FC<{ item: FooterLink }> = ({ item }) => {
   return item.href ? (
     <Link to={item.href} target={item.target}>
-      <Typography variant="subtitle2" fontWeight="normal" color="#666666">
+      <Typography fontSize="16px" fontWeight="400" color="#666666">
         {item.label}
       </Typography>
     </Link>
@@ -131,11 +54,16 @@ const LinkItem: React.FC<{ item: FooterLink }> = ({ item }) => {
 // Компонент колонки футера
 const FooterColumn: React.FC<FooterColumn> = (props) => {
   return (
-    <React.Fragment>
-      <Typography variant="subtitle1" color="primary" fontWeight="medium">
+    <Stack
+      sx={{
+        display: "flex",
+        justifyContent: "flex-start",
+      }}
+    >
+      <Typography color="primary" fontSize="18px" fontWeight="500">
         {props.title}
       </Typography>
-      <ul>
+      <ul className="m-2 list-none p-0">
         {props.links.map((linkGroup, linkGroupIndex) => (
           <li key={`link-group-${linkGroupIndex}`} className="flex">
             {linkGroup.icon && (
@@ -146,7 +74,7 @@ const FooterColumn: React.FC<FooterColumn> = (props) => {
                   alignItems: "center",
                 }}
               >
-                {linkGroup.icon}
+                <img src={linkGroup.icon} alt={"title"} />
               </Icon>
             )}
             {Array.isArray(linkGroup.link) ? (
@@ -169,7 +97,7 @@ const FooterColumn: React.FC<FooterColumn> = (props) => {
           </li>
         ))}
       </ul>
-    </React.Fragment>
+    </Stack>
   );
 };
 
@@ -205,8 +133,8 @@ function SocialIcons() {
   return (
     <div className="flex items-center gap-4">
       <Divider className="grow" />
-      <div className="my-4 flex justify-between gap-2">
-        {socialIcons.map((item, index) => (
+      <div className="mb-4 mt-2 flex justify-between gap-2">
+        {data.socialIcons.map((item, index) => (
           <Link to={item.href} title={item.title} key={`social-icon-${index}`}>
             <img
               src={item.src}
@@ -228,8 +156,6 @@ function SocialIcons() {
 
 // Компонент футера
 const Footer: React.FC = () => {
-  // const isUpMd = useMediaQuery<typeof theme>((theme) => theme.breakpoints.up("md"));
-
   return (
     <Box sx={{ backgroundColor: "#EEE" }}>
       <Container
@@ -242,22 +168,25 @@ const Footer: React.FC = () => {
       >
         <Stack gap={{ xl: 6 }} direction={{ sx: "column", xl: "row" }}>
           <Stack direction={"column"}>
-            <LogoComponent />
+            <Logo />
           </Stack>
           <Box
             sx={{
               display: "flex",
               flexDirection: {
-                xs: "column",
+                xs: "column-reverse",
                 lg: "row",
+              },
+              gap: {
+                xs: "25px",
+                lg: "0",
               },
               justifyContent: "space-between",
             }}
           >
             <Grid
               container
-              columns={{ xs: 2, xl: 3 }}
-              spacing={2}
+              spacing={1}
               sx={{
                 marginLeft: { xl: "auto" },
                 width: {
@@ -266,13 +195,8 @@ const Footer: React.FC = () => {
                 },
               }}
             >
-              {footerData.map((value, index) => (
-                <Grid
-                  item
-                  xs={index === 2 ? 2 : 1}
-                  xl={1}
-                  key={`footer-column-${index}`}
-                >
+              {data.columns.map((value, index) => (
+                <Grid item xs="auto" key={`footer-column-${index}`}>
                   <FooterColumn key={index} {...value} />
                 </Grid>
               ))}
@@ -281,7 +205,7 @@ const Footer: React.FC = () => {
               sx={{
                 width: {
                   xs: "100%",
-                  lg: "40%",
+                  lg: "30%",
                 },
                 display: "flex",
                 flexDirection: "column",

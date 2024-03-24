@@ -18,7 +18,7 @@ const ContactUs: React.FC = () => {
     theme.breakpoints.up("lg"),
   );
   return (
-    <Container
+    <Box
       sx={{
         display: "flex",
         flexDirection: {
@@ -26,6 +26,7 @@ const ContactUs: React.FC = () => {
           lg: "row",
         },
         marginY: "35px",
+        padding: 0,
       }}
     >
       <Box
@@ -106,7 +107,7 @@ const ContactUs: React.FC = () => {
           />
         </Box>
       </Link>
-    </Container>
+    </Box>
   );
 };
 
