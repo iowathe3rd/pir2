@@ -1,5 +1,7 @@
 import { Box, Container } from "@mui/material";
 import type { MetaFunction } from "@remix-run/node";
+import AboutMaterial from "~/sections/home/AboutMaterial";
+import ContactUs from "~/sections/home/ContactUs";
 import Hero from "~/sections/home/Hero";
 import ProductionSection from "~/sections/home/Production";
 import Testimonials from "~/sections/home/Testimonals";
@@ -17,13 +19,15 @@ export default function Index() {
       <Hero />
       <Container
         sx={{
-          displat: "flex",
+          display: "flex",
           flexDirection: "column",
-          gap: "20px",
+          gap: "2rem",
         }}
       >
         <ProductionSection />
         <Testimonials />
+        <AboutMaterial />
+        <ContactUs />
       </Container>
     </Box>
   );
