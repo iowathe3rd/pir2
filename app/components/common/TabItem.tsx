@@ -9,8 +9,13 @@ const TabItem = styled(Tab)(({ theme }) => ({
   color: "white",
   backgroundColor: "#ED801B",
   transition: "0.2s",
+  fontSize: "20px",
+  fontWeight: "700",
   [theme.breakpoints.up("sm")]: {
     minWidth: 120,
+  },
+  "& .MuiTabs-indicator	": {
+    display: "none",
   },
   "&:before": {
     transition: "0.2s",
@@ -21,7 +26,7 @@ const TabItem = styled(Tab)(({ theme }) => ({
       position: "absolute",
       left: 0,
       display: "block",
-      height: 20,
+      height: "100%",
       width: 1,
       zIndex: 1,
       backgroundColor: (theme.vars || theme).palette.grey[300],
@@ -45,6 +50,7 @@ const TabItem = styled(Tab)(({ theme }) => ({
   [`&.${tabClasses.selected}`]: {
     backgroundColor: "white",
     color: "black",
+    border: "none",
   },
   [`&.${tabClasses.selected} + .${tabClasses.root}`]: {
     zIndex: 1,

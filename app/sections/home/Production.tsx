@@ -1,5 +1,6 @@
 import { TabContext, TabList, TabPanel } from "@mui/lab";
-import { Box, Stack, Tab, Typography } from "@mui/material";
+import { TabListClassKey } from "@mui/lab/TabList";
+import { Box, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
 import Slide1 from "~/assets/slide1.jpg";
 import Slide2 from "~/assets/slide2.jpg";
@@ -8,6 +9,7 @@ import TabItem from "~/components/common/TabItem";
 
 export const productionData = [
   {
+    id: "1",
     tabTitle: "Профнастил",
     img: Slide1,
     listdata: {
@@ -29,6 +31,7 @@ export const productionData = [
     Торгово-развлекательных цетров, спортивных сооружений`,
   },
   {
+    id: "2",
     tabTitle: "Профнастил",
     img: Slide2,
     listdata: {
@@ -50,6 +53,7 @@ export const productionData = [
     Торгово-развлекательных цетров, спортивных сооружений`,
   },
   {
+    id: "3",
     tabTitle: "Профнастил",
     img: Slide3,
     listdata: {
@@ -77,9 +81,8 @@ const ProductionPanel = (data: (typeof productionData)[0]) => {
     <Stack>
       <Box
         sx={{
-          minHeight: "300px",
           display: "flex",
-          flexDirecton: {
+          flexDirection: {
             xs: "column",
             lg: "row",
           },
@@ -90,10 +93,17 @@ const ProductionPanel = (data: (typeof productionData)[0]) => {
             backgroundImage: `url(${data.img})`,
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
+            backgroundSize: {
+              xs: "contain",
+              lg: "cover",
+            },
             width: {
               xs: "100%",
               lg: "50%",
+            },
+            height: {
+              xs: "400px",
+              lg: "400px",
             },
           }}
         />
@@ -132,25 +142,37 @@ const ProductionPanel = (data: (typeof productionData)[0]) => {
 };
 
 const ProductionSection = () => {
-  const [value, setValue] = useState<string>("1");
+  const [value, setValue] = useState<string>(productionData[0].id);
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
   return (
-    <Box sx={{ width: "100%" }} className="shadow-lg">
-      <TabContext value={value}>
+    <Box
+      sx={{
+        width: "100%",
+        borderRadius: "3px",
+        marginTop: "-90px",
+        background: "white",
+        zIndex: 5,
+      }}
+      className="shadow-lg"
+    >
+      <TabContext value={"1"}>
         <Box>
           <TabList
             onChange={handleChange}
             sx={{
-              maringLeft: "auto",
+              "& .MuiTabs-flexContainer": {
+                justifyContent: "flex-end",
+                // marginLeft: "full",
+              },
             }}
           >
             {productionData.map((value, index) => {
               return (
-                <TabItem key={index} label={value.tabTitle} value={index} />
+                <TabItem key={index} label={value.tabTitle} value={value.id} />
               );
             })}
           </TabList>
@@ -158,7 +180,7 @@ const ProductionSection = () => {
 
         {productionData.map((value, index) => {
           return (
-            <TabPanel key={index} value={String(index)}>
+            <TabPanel key={index} value={value.id}>
               <ProductionPanel {...value} />
             </TabPanel>
           );

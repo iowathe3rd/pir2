@@ -17,7 +17,7 @@ export default function Hero() {
 
         display: "flex",
         alignItems: "center",
-        zIndex: "5",
+        zIndex: "1",
       }}
     >
       <Box
