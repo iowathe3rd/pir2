@@ -4,6 +4,7 @@ import AboutMaterial from "~/sections/home/AboutMaterial";
 import ContactUs from "~/sections/home/ContactUs";
 import Hero from "~/sections/home/Hero";
 import ProductionSection from "~/sections/home/Production";
+import SpecsSection from "~/sections/home/Specs";
 import Testimonials from "~/sections/home/Testimonals";
 
 export const meta: MetaFunction = () => {
@@ -27,6 +28,7 @@ export default function Index() {
         <ProductionSection />
         <Testimonials />
         <AboutMaterial />
+        <SpecsSection />
         <ContactUs />
       </Container>
     </Box>

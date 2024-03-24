@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+th,
+td {
+    padding: 10px 15px 10px 15px;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 10px;
+    *border-collapse: expression("separate", cellSpacing= "10px");
+}
