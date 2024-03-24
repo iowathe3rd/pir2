@@ -72,7 +72,22 @@ const data: MaterialData[] = [
 const SpecsSection = () => {
   return (
     <Box>
-      <img src={SpecsImage} alt="specifications" />
+      <Box
+        sx={{
+          backgroundImage: `url(${SpecsImage})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "contain",
+          width: "100%",
+          height: {
+            xs: "600px",
+          },
+          margin: {
+            xs: "10px 0px 25px 0px",
+            lg: "15px 0px 40px 0px",
+          },
+        }}
+      />
       <Table columns={columns} data={data} />
     </Box>
   );
