@@ -11,7 +11,9 @@ const QuickInfoCard: React.FC<QuickInfoCardProps> = ({ title, children }) => {
     <Box
       sx={{
         height: "190px",
-        width: { xl: "190px" },
+        width: {
+          xl: "190px",
+        },
         color: "#FFFFFF",
         backgroundColor: "#F9F9F9",
         display: "flex",
