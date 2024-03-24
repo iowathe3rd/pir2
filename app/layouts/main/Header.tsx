@@ -27,7 +27,7 @@ export default function Header() {
           sx={{
             display: {
               xs: "none",
-              xl: "block",
+              lg: "block",
             },
           }}
         >

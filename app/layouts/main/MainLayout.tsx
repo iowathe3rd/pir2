@@ -6,7 +6,6 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
-  Toolbar,
   Typography,
 } from "@mui/material";
 import React, { PropsWithChildren } from "react";
