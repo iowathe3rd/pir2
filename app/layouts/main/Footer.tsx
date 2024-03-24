@@ -4,6 +4,7 @@ import {
   Divider,
   Grid,
   Icon,
+  Link as MuiLink,
   Stack,
   Typography,
 } from "@mui/material";
@@ -40,14 +41,24 @@ export interface SocialIcons {
 const LinkItem: React.FC<{ item: FooterLink }> = ({ item }) => {
   return item.href ? (
     <Link to={item.href} target={item.target}>
-      <Typography fontSize="16px" fontWeight="400" color="#666666">
+      <MuiLink
+        fontSize="16px"
+        fontWeight="400"
+        color="#666666"
+        underline="none"
+      >
         {item.label}
-      </Typography>
+      </MuiLink>
     </Link>
   ) : (
-    <Typography variant="subtitle2" fontWeight="normal" color="#666666">
+    <MuiLink
+      variant="subtitle2"
+      fontWeight="normal"
+      color="#666666"
+      underline="none"
+    >
       {item.label}
-    </Typography>
+    </MuiLink>
   );
 };
 

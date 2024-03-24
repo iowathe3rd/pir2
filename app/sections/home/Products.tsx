@@ -29,6 +29,7 @@ const ProductCard = () => {
         },
         boxShadow: 3,
         gap: "30px",
+        zIndex: 3,
       }}
     >
       <Box
@@ -36,6 +37,9 @@ const ProductCard = () => {
           width: {
             xs: "100%",
             lg: "30%",
+          },
+          height: {
+            xs: "400px",
           },
           position: "relative",
           backgroundColor: "#D9D9D936",
@@ -47,15 +51,21 @@ const ProductCard = () => {
             position: "absolute",
             backgroundImage: `url(${product.image})`,
             backgroundSize: "contain",
-            backgroundPosition: "center",
+            backgroundPosition: "30% 40%",
             backgroundRepeat: "no-repeat",
             left: 0,
             right: 0,
             marginLeft: "auto",
             marginRight: "auto",
-            width: "120%" /* Need a specific value to work */,
-            height: "120%",
-            zIndex: 3,
+            width: {
+              xs: "110%",
+              lg: "115%",
+            } /* Need a specific value to work */,
+            height: {
+              xs: "110%",
+              lg: "115%",
+            },
+            zIndex: 4,
           }}
         />
       </Box>
