@@ -1,5 +1,6 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import ProductImage from "~/assets/product.png";
+import Price from "~/components/common/Price";
 import SectionTitle from "~/components/common/SectionTitle";
 
 const product = {
@@ -27,20 +28,37 @@ const ProductCard = () => {
           lg: "25px",
         },
         boxShadow: 3,
+        gap: "30px",
       }}
     >
       <Box
         sx={{
-          backgroundImage: `url(${product.image})`,
-          backgroundSize: "contain",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
           width: {
             xs: "100%",
             lg: "30%",
           },
+          position: "relative",
+          backgroundColor: "#D9D9D936",
+          borderRadius: "15px",
         }}
-      />
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            backgroundImage: `url(${product.image})`,
+            backgroundSize: "contain",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            left: 0,
+            right: 0,
+            marginLeft: "auto",
+            marginRight: "auto",
+            width: "120%" /* Need a specific value to work */,
+            height: "120%",
+            zIndex: 3,
+          }}
+        />
+      </Box>
       <Stack
         sx={{
           width: {
@@ -48,11 +66,25 @@ const ProductCard = () => {
             lg: "65%",
           },
         }}
+        spacing={"30px"}
       >
-        <SectionTitle title={product.title} subtitle={product.subTitle} />
+        <SectionTitle
+          title={product.title}
+          subtitle={product.subTitle}
+          isReverse
+        />
         <Typography>{product.description}</Typography>
-        <Box>
-          <Box></Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            gap: "18px",
+          }}
+        >
+          <Price
+            newPrice={product.price.newPrice}
+            oldPrice={product.price.oldPrice}
+          />
           <Button
             color="primary"
             variant="contained"

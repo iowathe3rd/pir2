@@ -13,10 +13,10 @@ function Table<T extends Record<string, any>>({
   data,
 }: TableProps<T>) {
   const cellClasses =
-    "w-32 h-20 outline outline-1 outline-[#DADADA] text-3xl font-normal leading-9 text-gray-600 whitespace-nowrap";
+    "w-32 h-20 outline outline-1 outline-[#DADADA] text-3xl font-normal leading-9 whitespace-nowrap";
 
   const emptyCellClass =
-    "w-32 h-20 text-3xl font-normal leading-9 text-gray-600 whitespace-nowrap";
+    "w-32 h-20 text-3xl font-normal leading-9 whitespace-nowrap";
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full divide-y divide-gray-200">
