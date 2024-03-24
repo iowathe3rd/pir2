@@ -4,6 +4,7 @@ import AboutMaterial from "~/sections/home/AboutMaterial";
 import ContactUs from "~/sections/home/ContactUs";
 import Hero from "~/sections/home/Hero";
 import ProductionSection from "~/sections/home/Production";
+import Products from "~/sections/home/Products";
 import SpecsSection from "~/sections/home/Specs";
 import Testimonials from "~/sections/home/Testimonals";
 
@@ -29,6 +30,7 @@ export default function Index() {
         <Testimonials />
         <AboutMaterial />
         <SpecsSection />
+        <Products />
         <ContactUs />
       </Container>
     </Box>
