@@ -27,7 +27,7 @@ const ProductCard = () => {
           xs: "10px",
           lg: "25px",
         },
-        boxShadow: 3,
+        boxShadow: 2,
         gap: "30px",
         zIndex: 3,
       }}
@@ -58,11 +58,11 @@ const ProductCard = () => {
             marginLeft: "auto",
             marginRight: "auto",
             width: {
-              xs: "110%",
+              xs: "90%",
               lg: "115%",
             } /* Need a specific value to work */,
             height: {
-              xs: "110%",
+              xs: "90%",
               lg: "115%",
             },
             zIndex: 4,
