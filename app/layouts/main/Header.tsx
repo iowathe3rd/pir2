@@ -49,7 +49,11 @@ export default function Header() {
             },
           }}
         >
-          <Button size="large">+7 (705) 575-60-75</Button>
+          <Button size="large">
+            <Typography fontWeight="500" fontSize="20px">
+              +7 (705) 575-60-75
+            </Typography>
+          </Button>
           <Button size="large" color="primary" variant="contained">
             Заказать теплорасчет
           </Button>
