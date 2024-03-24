@@ -1,4 +1,4 @@
-import { Button, Toolbar, Typography } from "@mui/material";
+import { Box, Button, Toolbar, Typography } from "@mui/material";
 import logo from "~/assets/logo.png";
 import Container from "~/components/common/Container";
 export default function Header() {
@@ -15,31 +15,45 @@ export default function Header() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          gap: "15px",
+          gap: {
+            xs: "15px",
+            lg: "30px",
+          },
         }}
       >
-        <img src={logo} alt="logo" width={200} />
+        <img src={logo} alt="logo" width={230} />
         <Typography
           variant="h6"
           component="span"
           lineHeight={"27px"}
-          className="w-2/4"
           sx={{
             display: {
               xs: "none",
               lg: "block",
             },
+            maxWidth: "600px",
           }}
         >
           Устройство плоских кровель с применением огнестойкого утеплителя
           нового полколения ПИР
         </Typography>
-        <div className="flex grow items-center">
-          <Button>+7 (705) 575-60-75</Button>
-          <Button color="primary" variant="contained">
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+            flexGrow: "1",
+            gap: {
+              xs: "10px",
+              lg: "26px",
+            },
+          }}
+        >
+          <Button size="large">+7 (705) 575-60-75</Button>
+          <Button size="large" color="primary" variant="contained">
             Заказать теплорасчет
           </Button>
-        </div>
+        </Box>
       </Container>
     </Toolbar>
   );
