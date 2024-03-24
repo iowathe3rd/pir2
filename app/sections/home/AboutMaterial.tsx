@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import Material from "~/assets/material.png";
-import SectionTitle from "~/components/common/SectionTitle";
+import { SectionTitle } from "~/components/common/SectionTitle";
 
 const AboutMaterial = () => {
   return (

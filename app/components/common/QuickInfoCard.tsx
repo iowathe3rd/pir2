@@ -45,7 +45,6 @@ const QuickInfoCard: React.FC<QuickInfoCardProps> = ({ title, children }) => {
           alignItems: "center",
           justifyContent: "center",
           height: "30%",
-          borderRadius: { xs: "10px", xl: 0 },
         }}
       >
         <Typography

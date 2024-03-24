@@ -1,13 +1,6 @@
-import {
-  Box,
-  Container,
-  Link,
-  Stack,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Link, Stack, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
-import SectionTitle from "~/components/common/SectionTitle";
+import { SectionTitle } from "~/components/common/SectionTitle";
 import { theme } from "~/lib/mui";
 
 import Almaty from "~/assets/almaty.png";

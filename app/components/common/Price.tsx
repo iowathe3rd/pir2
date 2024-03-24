@@ -12,7 +12,13 @@ const NewPrice = styled(Typography)({
   fontSize: "26px",
   fontWeight: 600,
 });
-const Price = ({ oldPrice, newPrice }) => {
+const Price = ({
+  oldPrice,
+  newPrice,
+}: {
+  oldPrice: string;
+  newPrice: string;
+}) => {
   return (
     <Box>
       <OldPrice>{oldPrice}</OldPrice>

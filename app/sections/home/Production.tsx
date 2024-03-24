@@ -157,6 +157,8 @@ const ProductionSection = () => {
         <Box>
           <TabList
             onChange={handleChange}
+            variant="scrollable"
+            scrollButtons={false}
             sx={{
               "& .MuiTabs-flexContainer": {
                 justifyContent: "flex-end",

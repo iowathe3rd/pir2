@@ -1,7 +1,7 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import HeroImage from "~/assets/hero.png";
 import Hero2Image from "~/assets/hero2.png";
-import SectionContainer from "~/components/common/SectionContainer";
+import { SectionContainer } from "~/components/common/SectionContainer";
 
 export default function Hero() {
   return (

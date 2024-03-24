@@ -8,7 +8,7 @@ type TableProps<T> = {
   data: T[];
 };
 
-function Table<T extends Record<string, any>>({
+function Table<T extends Record<string, string>>({
   columns,
   data,
 }: TableProps<T>) {

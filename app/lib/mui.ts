@@ -1,13 +1,9 @@
 import { createTheme } from "@mui/material";
-import { red } from "@mui/material/colors";
 
 export const theme = createTheme({
   palette: {
     primary: {
       main: "#ED801B",
-    },
-    error: {
-      main: red.A400,
     },
   },
   breakpoints: {

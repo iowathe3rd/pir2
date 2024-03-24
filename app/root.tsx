@@ -30,7 +30,7 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: Styles },
 ];
 
-export const headers: HeadersFunction = ({}) => ({
+export const headers: HeadersFunction = () => ({
   "X-Robots-Tag": "noindex",
 });
 
@@ -46,8 +46,9 @@ const Document = withEmotionCache(
       const tags = emotionCache.sheet.tags;
       emotionCache.sheet.flush();
       tags.forEach((tag) => {
-        // eslint-disable-next-line no-underscore-dangle
-        (emotionCache.sheet as any)._insertTag(tag);
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-expect-error
+        emotionCache.sheet._insertTag(tag);
       });
       // reset cache to reapply global styles
       clientStyleData.reset();

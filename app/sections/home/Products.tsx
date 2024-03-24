@@ -1,7 +1,7 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import ProductImage from "~/assets/product.png";
 import Price from "~/components/common/Price";
-import SectionTitle from "~/components/common/SectionTitle";
+import { SectionTitle } from "~/components/common/SectionTitle";
 
 const product = {
   image: ProductImage,

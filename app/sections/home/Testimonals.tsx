@@ -1,4 +1,4 @@
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import Testimonal1Icon from "~/assets/icons/testimonal1.svg";
 import Testimonal2Icon from "~/assets/icons/testimonal2.svg";
 import Testimonal3Icon from "~/assets/icons/testimonal3.svg";
@@ -52,6 +52,12 @@ export default function Testimonials() {
         spacing={{ xs: 1, xl: 2 }}
         container
         columns={{ xs: 2, lg: 6, xl: 12 }}
+        sx={{
+          padding: {
+            xs: "10px",
+            lg: "20px",
+          },
+        }}
       >
         {testimonials.map((value, index) => (
           <Grid item key={`testimonials-${index}`} xs={1}>
