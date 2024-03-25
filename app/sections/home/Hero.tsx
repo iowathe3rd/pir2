@@ -28,8 +28,8 @@ export default function Hero() {
             md: "50vw",
           },
           height: {
-            xl: "200px",
-            xs: "220px",
+            xl: "220px",
+            xs: "230px",
           },
           top: "80px",
         }}
@@ -66,8 +66,8 @@ export default function Hero() {
               <Typography
                 sx={{
                   fontSize: {
-                    xs: "26px",
-                    xl: "36px",
+                    xs: "36px",
+                    // xl: "36px",
                   },
                   lineHeight: {
                     xs: "35.1px",
@@ -77,6 +77,7 @@ export default function Hero() {
                     xs: 700,
                     xl: 900,
                   },
+                  width: "90%",
                 }}
               >
                 ПОСТАВКА И МОНТАЖ УТЕПЛИТЕЛЯ ПИР
@@ -84,8 +85,8 @@ export default function Hero() {
               <Typography
                 sx={{
                   fontSize: {
-                    xs: "16px",
-                    xl: "20px",
+                    xs: "26px",
+                    // xl: "20px",
                   },
                   lineHeight: {
                     xs: "21.6px",
@@ -104,7 +105,7 @@ export default function Hero() {
               variant="contained"
               sx={{
                 position: "absolute",
-                bottom: "100px",
+                bottom: "200px",
                 width: {
                   md: "380px",
                   xs: "80vw",

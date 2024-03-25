@@ -38,7 +38,7 @@ export default function Testimonials() {
   return (
     <Box
       sx={{
-        width: "fit-content",
+        width: "100%",
         borderRadius: "20px",
         boxShadow: 3,
         marginX: "auto",
@@ -58,6 +58,7 @@ export default function Testimonials() {
             xl: "15px",
           },
           width: "100%",
+          placeContent: "space-between",
         }}
       >
         {testimonials.map((value, index) => (
