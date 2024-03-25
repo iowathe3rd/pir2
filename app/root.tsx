@@ -1,5 +1,8 @@
 import { withEmotionCache } from "@emotion/react";
-import { unstable_useEnhancedEffect as useEnhancedEffect } from "@mui/material";
+import {
+  ThemeProvider,
+  unstable_useEnhancedEffect as useEnhancedEffect,
+} from "@mui/material";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { HeadersFunction, LinksFunction } from "@remix-run/node";
 import {
@@ -70,7 +73,9 @@ const Document = withEmotionCache(
           />
         </head>
         <body>
-          <Layout>{children}</Layout>
+          <ThemeProvider theme={theme}>
+            <Layout>{children}</Layout>
+          </ThemeProvider>
           <ScrollRestoration />
           <Scripts />
         </body>

@@ -63,6 +63,7 @@ const DrawerAppBar: React.FC<PropsWithChildren> = ({ children }) => {
         </Drawer>
       </nav>
       {children}
+      <Footer />
     </Box>
   );
 };
@@ -71,7 +72,6 @@ const MainLayout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <React.Fragment>
       <DrawerAppBar>{children}</DrawerAppBar>
-      <Footer />
     </React.Fragment>
   );
 };
