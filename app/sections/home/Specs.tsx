@@ -74,23 +74,26 @@ const SpecsSection = () => {
     <Box>
       <Box
         sx={{
-          backgroundImage: `url(${SpecsImage})`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          backgroundSize: "contain",
           width: "100%",
-          height: {
-            xs: "600px",
-          },
-          margin: {
-            xs: "10px 0px 25px 0px",
-            lg: "15px 0px 40px 0px",
-          },
+          height: "1000px", // May need to adjust based on the actual height of the image or container requirement
+          overflowY: "hidden", // Ensures no vertical scrolling
+          overflowX: "auto", // Enables horizontal scrolling
         }}
-      />
+      >
+        <Box
+          component="img" // Treat this Box as an img element
+          src={SpecsImage} // Provides the source for the image
+          alt="Specifications" // Alternative text for the image
+          sx={{
+            width: "auto", // Image can be wider than the container
+            height: "100%", // Container height is full of the image height
+            display: "block", // Prevents inline formatting issues
+            margin: "0 auto", // Centers the image if it's not wider than the container
+          }}
+        />
+      </Box>
       <Table columns={columns} data={data} />
     </Box>
   );
 };
-
 export default SpecsSection;

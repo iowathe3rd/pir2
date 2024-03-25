@@ -14,6 +14,15 @@ const TabItem = styled(Tab)(({ theme }) => ({
   [theme.breakpoints.up("sm")]: {
     minWidth: 120,
   },
+  [theme.breakpoints.up("md")]: {
+    minWidth: 250,
+  },
+  [theme.breakpoints.up("lg")]: {
+    minWidth: 300,
+  },
+  [theme.breakpoints.up("xl")]: {
+    minWidth: 350,
+  },
   "& .MuiTabs-indicator	": {
     display: "none",
   },

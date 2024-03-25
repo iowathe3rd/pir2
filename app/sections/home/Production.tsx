@@ -147,7 +147,7 @@ const ProductionSection = () => {
       sx={{
         width: "100%",
         borderRadius: "3px",
-        marginTop: "-90px",
+        marginTop: "-60px",
         background: "white",
         zIndex: 5,
       }}
