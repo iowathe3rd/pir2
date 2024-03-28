@@ -7,5 +7,6 @@ import tsconfigPaths from "vite-tsconfig-paths";
 installGlobals();
 
 export default defineConfig({
-  plugins: [mdx(), remix(), tsconfigPaths()],
+  plugins: [mdx(), tsconfigPaths(), remix()],
+  assetsInclude: ["**/*.svg", "**/*.png", "**/*.jpg", "**/*.ttf"],
 });

@@ -7,57 +7,56 @@
 import { CacheProvider } from "@emotion/react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { RemixBrowser } from "@remix-run/react";
-import React, { startTransition, StrictMode } from "react";
+import React, { StrictMode, startTransition } from "react";
 import { hydrateRoot } from "react-dom/client";
 import ClientStyleContext from "./context/ClientStyleContext";
 import createEmotionCache from "./lib/emotion";
 import { theme } from "./lib/mui";
 
 interface ClientCacheProviderProps {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 function ClientCacheProvider({ children }: ClientCacheProviderProps) {
-	const [cache, setCache] = React.useState(createEmotionCache());
+  const [cache, setCache] = React.useState(createEmotionCache());
 
-	const clientStyleContextValue = React.useMemo(
-		() => ({
-			reset() {
-				setCache(createEmotionCache());
-			},
-		}),
-		[],
-	);
+  const clientStyleContextValue = React.useMemo(
+    () => ({
+      reset() {
+        setCache(createEmotionCache());
+      },
+    }),
+    [],
+  );
 
-	return (
-		<ClientStyleContext.Provider value={clientStyleContextValue}>
-			<CacheProvider value={cache}>{children}</CacheProvider>
-		</ClientStyleContext.Provider>
-	);
+  return (
+    <ClientStyleContext.Provider value={clientStyleContextValue}>
+      <CacheProvider value={cache}>{children}</CacheProvider>
+    </ClientStyleContext.Provider>
+  );
 }
 
-
 const hydrate = () => {
-	startTransition(() => {
-		hydrateRoot(
-			document,
-			<ClientCacheProvider>
-				<ThemeProvider theme={theme}>
-					{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-					<CssBaseline />
-					<StrictMode>
-						<RemixBrowser />
-					</StrictMode>
-				</ThemeProvider>
-			</ClientCacheProvider>,
-		);
-	});
+  startTransition(() => {
+    hydrateRoot(
+      document,
+      <ClientCacheProvider>
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <StrictMode>
+            <RemixBrowser />
+          </StrictMode>
+        </ThemeProvider>
+      </ClientCacheProvider>,
+    );
+  });
 };
 
 if (window.requestIdleCallback) {
-	window.requestIdleCallback(hydrate);
+  window.requestIdleCallback(hydrate);
 } else {
-	// Safari doesn't support requestIdleCallback
-	// https://caniuse.com/requestidlecallback
-	window.setTimeout(hydrate, 1);
+  // Safari doesn't support requestIdleCallback
+  // https://caniuse.com/requestidlecallback
+  window.setTimeout(hydrate, 1);
 }

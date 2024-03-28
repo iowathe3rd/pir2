@@ -41,14 +41,9 @@ export interface SocialIcons {
 const LinkItem: React.FC<{ item: FooterLink }> = ({ item }) => {
   return item.href ? (
     <Link to={item.href} target={item.target}>
-      <MuiLink
-        fontSize="16px"
-        fontWeight="400"
-        color="#666666"
-        underline="none"
-      >
+      <Typography fontSize="16px" fontWeight="400" color="#666666">
         {item.label}
-      </MuiLink>
+      </Typography>
     </Link>
   ) : (
     <MuiLink
