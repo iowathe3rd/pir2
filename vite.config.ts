@@ -9,4 +9,9 @@ installGlobals();
 export default defineConfig({
   plugins: [mdx(), tsconfigPaths(), remix()],
   assetsInclude: ["**/*.svg", "**/*.png", "**/*.jpg", "**/*.ttf"],
+  build: {
+    rollupOptions: {
+      external: "./app/assets/",
+    },
+  },
 });
