@@ -1,10 +1,10 @@
 import { Box, Grid } from "@mui/material";
-import Testimonal1Icon from "../../assets/icons/testimonal1.svg";
-import Testimonal2Icon from "../../assets/icons/testimonal2.svg";
-import Testimonal3Icon from "../../assets/icons/testimonal3.svg";
-import Testimonal4Icon from "../../assets/icons/testimonal4.svg";
-import Testimonal5Icon from "../../assets/icons/testimonal5.svg";
-import Testimonal6Icon from "../../assets/icons/testimonal6.svg";
+import Testimonal1Icon from "~/assets/icons/testimonal1.svg";
+import Testimonal2Icon from "~/assets/icons/testimonal2.svg";
+import Testimonal3Icon from "~/assets/icons/testimonal3.svg";
+import Testimonal4Icon from "~/assets/icons/testimonal4.svg";
+import Testimonal5Icon from "~/assets/icons/testimonal5.svg";
+import Testimonal6Icon from "~/assets/icons/testimonal6.svg";
 import QuickInfoCard from "../../components/common/QuickInfoCard";
 
 const testimonials = [
