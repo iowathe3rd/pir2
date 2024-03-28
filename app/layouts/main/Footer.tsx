@@ -74,9 +74,9 @@ const FooterColumn: React.FC<FooterColumn> = (props) => {
       <Typography color="primary" fontSize="18px" fontWeight="500">
         {props.title}
       </Typography>
-      <ul className="m-2 list-none p-0">
+      <ul className="my-2 list-none p-0">
         {props.links.map((linkGroup, linkGroupIndex) => (
-          <li key={`link-group-${linkGroupIndex}`} className="flex">
+          <li key={`link-group-${linkGroupIndex}`} className="m-0 flex">
             {linkGroup.icon && (
               <Icon
                 sx={{
@@ -117,6 +117,7 @@ function MetaInformation() {
     <Grid
       container
       justifyContent="space-between"
+      // alignItems={"center"}
       sx={{
         color: "#666666",
       }}
@@ -177,7 +178,7 @@ const Footer: React.FC = () => {
           paddingTop: "30px",
         }}
       >
-        <Stack gap={{ xl: 6 }} direction={{ sx: "column", xl: "row" }}>
+        <Stack direction={{ sx: "column" }}>
           <Stack direction={"column"}>
             <Logo />
           </Stack>
@@ -186,23 +187,28 @@ const Footer: React.FC = () => {
               display: "flex",
               flexDirection: {
                 xs: "column-reverse",
-                lg: "row",
+                md: "row",
+                xl: "row",
               },
               gap: {
                 xs: "25px",
-                lg: "0",
+                xl: "0",
               },
               justifyContent: "space-between",
+              alignItems: "center",
             }}
           >
             <Grid
               container
-              spacing={1}
+              spacing={"32px"}
               sx={{
-                marginLeft: { xl: "auto" },
                 width: {
                   xs: "100%",
                   lg: "40%",
+                },
+                justifyContent: {
+                  xs: "flex-start",
+                  xl: "center",
                 },
               }}
             >

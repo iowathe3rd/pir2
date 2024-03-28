@@ -13,10 +13,10 @@ function Table<T extends Record<string, string>>({
   data,
 }: TableProps<T>) {
   const cellClasses =
-    "w-32 h-20 outline outline-1 outline-[#DADADA] text-3xl font-normal leading-9 whitespace-nowrap";
+    "w-32 h-18 outline outline-1 outline-[#DADADA] text-3xl font-normal leading-9 whitespace-nowrap";
 
   const emptyCellClass =
-    "w-32 h-20 text-3xl font-normal leading-9 whitespace-nowrap";
+    "w-32 h-18 text-3xl font-normal leading-9 whitespace-nowrap";
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full divide-y divide-gray-200">
@@ -29,8 +29,7 @@ function Table<T extends Record<string, string>>({
                 key={`th-${index}`}
                 className={cellClasses + " border-orange-600 bg-white"}
                 style={{
-                  fontFamily: "Roboto",
-                  fontSize: "20px",
+                  fontSize: "24px",
                   fontWeight: "400",
                   lineHeight: "27px",
                   letterSpacing: "0.02em",
@@ -48,8 +47,7 @@ function Table<T extends Record<string, string>>({
               <td
                 className={cellClasses + " bg-white"}
                 style={{
-                  fontFamily: "Roboto",
-                  fontSize: "26px",
+                  fontSize: "24px",
                   fontWeight: "400",
                   lineHeight: "35.1px",
                   letterSpacing: "0.02em",
@@ -62,8 +60,7 @@ function Table<T extends Record<string, string>>({
                   key={`td-${rowIndex}-${colIndex}`}
                   className={cellClasses + " bg-white"}
                   style={{
-                    fontFamily: "Roboto",
-                    fontSize: "26px",
+                    fontSize: "24px",
                     fontWeight: "400",
                     lineHeight: "35.1px",
                     letterSpacing: "0.02em",

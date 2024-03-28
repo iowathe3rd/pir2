@@ -6,6 +6,8 @@ import Slide2 from "~/assets/slide2.jpg";
 import Slide3 from "~/assets/slide3.jpg";
 import TabItem from "~/components/common/TabItem";
 
+import Product1MainText from "~/content/hero/product1.main.md";
+
 export const productionData = [
   {
     id: "1",
@@ -85,50 +87,74 @@ const ProductionPanel = (data: (typeof productionData)[0]) => {
       >
         <Box
           sx={{
-            backgroundImage: `url(${data.img})`,
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: {
-              xs: "contain",
-              lg: "cover",
+            width: "100%",
+            padding: "20px",
+            "& img": {
+              width: "100%",
+              height: "auto",
             },
-            width: {
-              xs: "100%",
-              lg: "50%",
-            },
-            height: "300px",
           }}
-        />
+        >
+          <img src={data.img} alt={data.tabTitle} />
+        </Box>
         <Box
           sx={{
             width: {
               xs: "100%",
               lg: "50%",
             },
-            marginTop: {
-              xs: 0,
-              lg: "15px",
-            },
+            marginTop: "50px",
+            fontWeight: "400",
+            fontSize: "20px",
+            lineHeight: "27px",
           }}
         >
-          <Typography>{data.listdata.title}</Typography>
-          <ul className="ml-10 list-decimal">
+          <Typography
+            sx={{
+              fontWeight: "400",
+              fontSize: "20px",
+              lineHeight: "27px",
+            }}
+          >
+            {data.listdata.title}
+          </Typography>
+          <ul className="mt-0 list-decimal">
             {data.listdata.items.map((value, index) => {
               return <li key={index}>{value}</li>;
             })}
           </ul>
         </Box>
       </Box>
-      <Typography
+      <Box
         sx={{
           marginTop: {
             xs: 0,
             lg: "1rem",
           },
+          fontWeight: "400",
+          fontSize: "20px",
+          lineHeight: "27px",
+          color: "#393939",
+          "& ul": {
+            margin: "0",
+          },
+          "& p": {
+            marginBottom: "0",
+          },
+
+          paddingLeft: {
+            xl: "84px",
+          },
+          paddingRight: {
+            xl: "48px",
+          },
+          paddingBottom: {
+            xl: "80px",
+          },
         }}
       >
-        {data.description}
-      </Typography>
+        <Product1MainText />
+      </Box>
     </Stack>
   );
 };
@@ -151,14 +177,12 @@ const ProductionSection = () => {
         background: "white",
         zIndex: 5,
       }}
-      className="shadow-lg"
+      className="shadow"
     >
       <TabContext value={value}>
         <Box>
           <TabList
             onChange={handleChange}
-            variant="scrollable"
-            scrollButtons={false}
             sx={{
               "& .MuiTabs-flexContainer": {
                 justifyContent: "flex-end",

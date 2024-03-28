@@ -1,6 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+    font-family: "Inter";
+    src: url("assets/fonts/InterRegular/InterRegular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: Inter;
+}
+
+html {
+    font-family: "Inter", sans-serif;
+}
 th,
 td {
     padding: 10px 15px 10px 15px;
@@ -10,4 +24,8 @@ table {
     border-collapse: separate;
     border-spacing: 10px;
     *border-collapse: expression("separate", cellSpacing= "10px");
+}
+
+.shadow {
+    box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.08);
 }

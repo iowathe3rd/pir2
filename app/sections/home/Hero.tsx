@@ -6,7 +6,10 @@ export default function Hero() {
   return (
     <Box
       sx={{
-        height: "650px",
+        height: {
+          xl: "650px",
+          xs: "550px",
+        },
         width: "100%",
         background: `url(${HeroImage})`,
         position: "relative",
@@ -29,7 +32,9 @@ export default function Hero() {
           },
           height: {
             xl: "220px",
-            xs: "230px",
+            lg: "200px",
+            md: "220px",
+            xs: "240px",
           },
           top: "80px",
         }}
@@ -59,7 +64,7 @@ export default function Hero() {
                 position: "absolute",
                 top: "80px",
                 color: "#FFFFFF",
-                padding: "32px",
+                padding: "32px 0px 32px 0px",
               }}
               gap={2}
             >
@@ -74,8 +79,8 @@ export default function Hero() {
                     xl: "48.6px",
                   },
                   fontWeight: {
-                    xs: 700,
-                    xl: 900,
+                    xs: 900,
+                    // xl: 900,
                   },
                   width: "90%",
                 }}
@@ -85,7 +90,7 @@ export default function Hero() {
               <Typography
                 sx={{
                   fontSize: {
-                    xs: "26px",
+                    xs: "20px",
                     // xl: "20px",
                   },
                   lineHeight: {
@@ -93,7 +98,7 @@ export default function Hero() {
                     xl: "27px",
                   },
                   fontWeight: 400,
-                  width: { xl: "60%" },
+                  width: { xl: "90%" },
                 }}
               >
                 Тепло/Гидроизоляция плоских кровель
@@ -105,7 +110,10 @@ export default function Hero() {
               variant="contained"
               sx={{
                 position: "absolute",
-                bottom: "200px",
+                bottom: {
+                  xl: "200px",
+                  xs: "100px",
+                },
                 width: {
                   md: "380px",
                   xs: "80vw",

@@ -38,15 +38,15 @@ export default function Testimonials() {
   return (
     <Box
       sx={{
-        width: "100%",
+        width: "fit-content",
         borderRadius: "20px",
-        boxShadow: 3,
         marginX: "auto",
         padding: {
           xs: 1,
           xl: 2,
         },
       }}
+      className="shadow"
     >
       <Grid
         spacing={{ xs: 1, xl: 2 }}

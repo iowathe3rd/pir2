@@ -1,7 +1,6 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import ProductImage from "~/assets/product.png";
 import Price from "~/components/common/Price";
-import { SectionTitle } from "~/components/common/SectionTitle";
 
 const product = {
   image: ProductImage,
@@ -21,29 +20,34 @@ const ProductCard = () => {
         display: "flex",
         flexDirection: {
           xs: "column",
-          lg: "row",
+          md: "row",
         },
         padding: {
           xs: "10px",
           lg: "25px",
         },
-        boxShadow: 2,
         gap: "30px",
         zIndex: 3,
+        borderRadius: "5px",
       }}
+      className="shadow"
     >
       <Box
         sx={{
           width: {
             xs: "100%",
-            lg: "30%",
+            md: "40%",
+            xl: "30%",
           },
           height: {
             xs: "400px",
+            md: "500px",
+            xl: "auto",
           },
           position: "relative",
           backgroundColor: "#D9D9D936",
           borderRadius: "15px",
+          aspectRatio: "",
         }}
       >
         <Box
@@ -51,19 +55,24 @@ const ProductCard = () => {
             position: "absolute",
             backgroundImage: `url(${product.image})`,
             backgroundSize: "contain",
-            backgroundPosition: "30% 40%",
+            backgroundPosition: {
+              xs: "center",
+              xl: "30% 40%",
+            },
             backgroundRepeat: "no-repeat",
             left: 0,
             right: 0,
             marginLeft: "auto",
             marginRight: "auto",
             width: {
-              xs: "90%",
-              lg: "115%",
+              xs: "100%",
+              md: "110%",
+              xl: "105%",
             } /* Need a specific value to work */,
             height: {
-              xs: "90%",
-              lg: "115%",
+              xs: "100%",
+              md: "105%",
+              xl: "105%",
             },
             zIndex: 4,
           }}
@@ -78,12 +87,22 @@ const ProductCard = () => {
         }}
         spacing={"30px"}
       >
-        <SectionTitle
-          title={product.title}
-          subtitle={product.subTitle}
-          isReverse
-        />
-        <Typography>{product.description}</Typography>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Typography fontSize={"20px"} fontWeight={600}>
+            {product.title}
+          </Typography>
+          <Typography fontSize={"20px"} fontWeight={400}>
+            {product.subTitle}
+          </Typography>
+        </Box>
+        <Typography fontWeight={400} fontSize={20}>
+          {product.description}
+        </Typography>
         <Box
           sx={{
             display: "flex",
@@ -102,7 +121,9 @@ const ProductCard = () => {
               borderRadius: "3px",
             }}
           >
-            Оставить заявку
+            <Typography fontSize={"14px"} fontWeight={"700"}>
+              Оставить заявку
+            </Typography>
           </Button>
         </Box>
       </Stack>

@@ -23,7 +23,8 @@ export default function Header() {
       >
         <img src={logo} alt="logo" width={230} />
         <Typography
-          variant="h6"
+          fontWeight={700}
+          fontSize={"20px"}
           component="span"
           lineHeight={"27px"}
           sx={{
@@ -31,7 +32,7 @@ export default function Header() {
               xs: "none",
               lg: "block",
             },
-            maxWidth: "600px",
+            maxWidth: "550px",
           }}
         >
           Устройство плоских кровель с применением огнестойкого утеплителя
