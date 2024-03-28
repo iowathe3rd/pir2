@@ -176,6 +176,8 @@ const ProductionSection = () => {
         marginTop: "-60px",
         background: "white",
         zIndex: 5,
+
+        overflowX: "scroll",
       }}
       className="shadow"
     >
@@ -187,6 +189,7 @@ const ProductionSection = () => {
               "& .MuiTabs-flexContainer": {
                 justifyContent: "flex-end",
               },
+              msOverflowY: "hidden",
             }}
           >
             {productionData.map((value, index) => {
