@@ -93,14 +93,20 @@ const ProductCard = () => {
             flexDirection: "column",
           }}
         >
-          <Typography fontSize={"20px"} fontWeight={600}>
+          <Typography fontSize={"24px"} fontWeight={600}>
             {product.title}
           </Typography>
           <Typography fontSize={"20px"} fontWeight={400}>
             {product.subTitle}
           </Typography>
         </Box>
-        <Typography fontWeight={400} fontSize={20}>
+        <Typography
+          fontWeight={400}
+          fontSize={20}
+          sx={{
+            lineHeight: "35px",
+          }}
+        >
           {product.description}
         </Typography>
         <Box
