@@ -107,7 +107,10 @@ const ProductionPanel = (data: productionTabProps & { value: 0 | 1 | 2 }) => {
           >
             <Box
               sx={{
-                width: "100%",
+                width: {
+                  xs: "100%",
+                  xl: "50%",
+                },
                 padding: "20px",
                 "& img": {
                   width: "100%",
@@ -178,7 +181,7 @@ const ProductionPanel = (data: productionTabProps & { value: 0 | 1 | 2 }) => {
 
               padding: {
                 xs: "10px",
-                xl: "unset",
+                xl: "0px 48px 80px 84px",
               },
             }}
           >
