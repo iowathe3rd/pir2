@@ -67,7 +67,7 @@ const SpecsSection = () => {
       <Box
         sx={{
           width: "100%",
-          height: "630px",
+          height: "710px",
           overflowY: "hidden",
           overflowX: {
             xs: "scroll",

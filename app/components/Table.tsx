@@ -58,7 +58,7 @@ function Table<T extends Record<string, string>>({
               {columns.map((column, colIndex) => (
                 <td
                   key={`td-${rowIndex}-${colIndex}`}
-                  className={cellClasses + " bg-white"}
+                  className={cellClasses + " bg-white text-center"}
                   style={{
                     fontSize: "24px",
                     fontWeight: "400",
