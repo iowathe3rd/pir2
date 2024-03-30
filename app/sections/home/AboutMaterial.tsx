@@ -46,7 +46,7 @@ const AboutMaterial = () => {
               textIndent: "20px",
               fontWeight: "400",
               fontSize: "20px",
-              lineHeight: "27px",
+              lineHeight: "30px",
             }}
           >
             Самое главное требование, предъявляемое к утеплителю - его
