@@ -216,7 +216,7 @@ const Footer: React.FC = () => {
               sx={{
                 width: {
                   xs: "100%",
-                  lg: "fit-content",
+                  lg: "max-content",
                 },
                 display: "flex",
                 flexDirection: "column",
@@ -227,12 +227,21 @@ const Footer: React.FC = () => {
             >
               <Typography
                 fontWeight={"400"}
-                fontSize={"16px"}
+                fontSize={"20px"}
                 color={"#666666"}
               >
                 ПОСТАВКА И МОНТАЖ УТЕПЛИТЕЛЯ ПИР
               </Typography>
-              <Button color="primary" variant="contained" fullWidth>
+              <Button
+                color="primary"
+                variant="contained"
+                sx={{
+                  width: {
+                    xs: "100%",
+                    xl: "calc(100% + 10%)",
+                  },
+                }}
+              >
                 Заказать звонок
               </Button>
             </Box>
