@@ -22,22 +22,29 @@ export default function Header() {
         }}
       >
         <img src={logo} alt="logo" width={230} />
-        <Typography
-          fontWeight={700}
-          fontSize={"20px"}
-          component="span"
-          lineHeight={"27px"}
+        <Box
           sx={{
-            display: {
-              xs: "none",
-              lg: "block",
-            },
-            maxWidth: "550px",
+            width: "full",
+            marginX: "auto",
           }}
         >
-          Устройство плоских кровель с применением огнестойкого утеплителя
-          нового полколения ПИР
-        </Typography>
+          <Typography
+            fontWeight={700}
+            fontSize={"20px"}
+            component="span"
+            lineHeight={"27px"}
+            sx={{
+              display: {
+                xs: "none",
+                lg: "block",
+              },
+              maxWidth: "550px",
+            }}
+          >
+            Устройство плоских кровель с применением огнестойкого утеплителя
+            нового полколения ПИР
+          </Typography>
+        </Box>
         <Box
           sx={{
             display: {
@@ -46,7 +53,6 @@ export default function Header() {
             },
             justifyContent: "flex-end",
             alignItems: "center",
-            flexGrow: "1",
             gap: {
               xs: "10px",
               lg: "26px",
