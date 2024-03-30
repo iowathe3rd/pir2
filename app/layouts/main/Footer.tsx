@@ -167,7 +167,7 @@ const Footer: React.FC = () => {
     <Box sx={{ backgroundColor: "#EEE" }}>
       <Container
         component="footer"
-        className="p-3.5 pb-2.5 pt-7"
+        className="pb-2.5 pt-7"
         sx={{
           paddingBottom: "10px",
           paddingTop: "30px",
@@ -195,15 +195,14 @@ const Footer: React.FC = () => {
           >
             <Grid
               container
-              spacing={"32px"}
               sx={{
                 width: {
                   xs: "100%",
                   lg: "40%",
+                  gap: "20px",
                 },
                 justifyContent: {
                   xs: "flex-start",
-                  xl: "center",
                 },
               }}
             >
@@ -217,7 +216,7 @@ const Footer: React.FC = () => {
               sx={{
                 width: {
                   xs: "100%",
-                  lg: "30%",
+                  lg: "fit-content",
                 },
                 display: "flex",
                 flexDirection: "column",

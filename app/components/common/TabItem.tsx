@@ -11,10 +11,7 @@ const TabItem = styled(Tab)(({ theme }) => ({
   transition: "0.2s",
   fontSize: "20px",
   fontWeight: "700",
-  [theme.breakpoints.up("sm")]: {
-    minWidth: 120,
-  },
-  [theme.breakpoints.up("md")]: {
+  [theme.breakpoints.up("xs")]: {
     minWidth: 250,
   },
   [theme.breakpoints.up("lg")]: {

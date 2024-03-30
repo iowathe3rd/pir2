@@ -106,7 +106,13 @@ const ProductCard = () => {
         <Box
           sx={{
             display: "flex",
-            justifyContent: "flex-end",
+            justifyContent: {
+              md: "flex-end",
+            },
+            flexDirection: {
+              xs: "column",
+              md: "row",
+            },
             gap: "18px",
           }}
         >
@@ -118,12 +124,19 @@ const ProductCard = () => {
             color="primary"
             variant="contained"
             sx={{
-              borderRadius: "3px",
+              fontSize: {
+                xs: "18px",
+                xl: "20px",
+              },
+              fontWeight: "700",
+              height: {
+                xs: "70px",
+                md: "90px",
+              },
+              overflow: "hidden",
             }}
           >
-            <Typography fontSize={"14px"} fontWeight={"700"}>
-              Оставить заявку
-            </Typography>
+            Оставить заявку
           </Button>
         </Box>
       </Stack>

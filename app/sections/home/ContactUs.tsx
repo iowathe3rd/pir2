@@ -1,15 +1,36 @@
 import { Box, Link, Stack, Typography, useMediaQuery } from "@mui/material";
-import React from "react";
-import { SectionTitle } from "~/components/common/SectionTitle";
-import { theme } from "~/lib/mui";
-
 import Almaty from "~/assets/almaty.png";
 import Location from "~/assets/location.svg";
+import { SectionTitle } from "~/components/common/SectionTitle";
+import { theme } from "~/lib/mui";
 
 const ContactUs: React.FC = () => {
   const isUpLg = useMediaQuery<typeof theme>((theme) =>
     theme.breakpoints.up("lg"),
   );
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const scriptSrc =
+  //       "https:api-maps.yandex.ru/v3/?apikey=9a70cddc-5c9f-4484-84ee-eaea17bf4622&lang=ru_RU";
+
+  //     loadScript(scriptSrc).then(() => {
+  //       // Здесь ваш код, который работает с API Яндекс.Карт
+  //       // Например, инициализация карты:
+  //       window.ymaps.ready.then(() => {
+  //         // HTML-элемент.
+  //         const map = new window.ymaps.YMap(
+  //           document.getElementById("first_map"),
+  //           {
+  //             location: {
+  //               center: [37.588144, 55.733842],
+  //               zoom: 10,
+  //             },
+  //           },
+  //         );
+  //       });
+  //     });
+  //   }
+  // }, []);
   return (
     <Box
       sx={{
@@ -78,6 +99,7 @@ const ContactUs: React.FC = () => {
             borderRadius: "15px",
             position: "relative",
           }}
+          id={"footer-map"}
         >
           <img
             style={{

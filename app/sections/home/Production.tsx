@@ -1,5 +1,4 @@
-import { TabContext, TabList, TabPanel } from "@mui/lab";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Stack, Tabs, Typography } from "@mui/material";
 import React, { useState } from "react";
 import Slide1 from "~/assets/slide1.jpg";
 import Slide2 from "~/assets/slide2.jpg";
@@ -8,9 +7,21 @@ import TabItem from "~/components/common/TabItem";
 
 import Product1MainText from "~/content/hero/product1.main.md";
 
-export const productionData = [
+export type productionTabProps = {
+  id: string;
+  index: number;
+  tabTitle: string;
+  img: string;
+  listdata: {
+    title: string;
+    items: string[];
+  };
+  description: string;
+};
+export const productionData: productionTabProps[] = [
   {
     id: "1",
+    index: 0,
     tabTitle: "Профнастил",
     img: Slide1,
     listdata: {
@@ -33,6 +44,7 @@ export const productionData = [
   },
   {
     id: "2",
+    index: 1,
     tabTitle: "Бетон",
     img: Slide2,
     listdata: {
@@ -55,6 +67,7 @@ export const productionData = [
   },
   {
     id: "3",
+    index: 2,
     tabTitle: "П-образные плиты",
     img: Slide3,
     listdata: {
@@ -73,99 +86,117 @@ export const productionData = [
   },
 ];
 
-const ProductionPanel = (data: (typeof productionData)[0]) => {
+const ProductionPanel = (data: productionTabProps & { value: 0 | 1 | 2 }) => {
   return (
-    <Stack>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: {
-            xs: "column",
-            lg: "row",
-          },
-        }}
-      >
-        <Box
-          sx={{
-            width: "100%",
-            padding: "20px",
-            "& img": {
-              width: "100%",
-              height: "auto",
-            },
-          }}
-        >
-          <img src={data.img} alt={data.tabTitle} />
-        </Box>
-        <Box
-          sx={{
-            width: {
-              xs: "100%",
-              lg: "50%",
-            },
-            marginTop: "50px",
-            fontWeight: "400",
-            fontSize: "20px",
-            lineHeight: "27px",
-          }}
-        >
-          <Typography
+    <Stack
+      role="tabpanel"
+      hidden={data.value != data.index}
+      id={`production-tabpanel-${data.index}`}
+      aria-labelledby={`production-tab-${data.index}`}
+    >
+      {data.value === data.index && (
+        <React.Fragment>
+          <Box
             sx={{
+              display: "flex",
+              flexDirection: {
+                xs: "column",
+                lg: "row",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                width: "100%",
+                padding: "20px",
+                "& img": {
+                  width: "100%",
+                  height: "auto",
+                },
+              }}
+            >
+              <img src={data.img} alt={data.tabTitle} />
+            </Box>
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                  lg: "50%",
+                },
+                marginTop: "50px",
+                fontWeight: "400",
+                fontSize: "20px",
+                lineHeight: "27px",
+                padding: {
+                  xs: "10px",
+                  xl: "unset",
+                },
+              }}
+            >
+              <Typography
+                sx={{
+                  fontWeight: "400",
+                  fontSize: "20px",
+                  lineHeight: "27px",
+                }}
+              >
+                {data.listdata.title}
+              </Typography>
+              <ul className="mt-0 list-decimal">
+                {data.listdata.items.map((value, index) => {
+                  return <li key={index}>{value}</li>;
+                })}
+              </ul>
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              marginTop: {
+                xs: 0,
+                lg: "1rem",
+              },
               fontWeight: "400",
               fontSize: "20px",
               lineHeight: "27px",
+              color: "#393939",
+              "& ul": {
+                margin: "0",
+              },
+              "& p": {
+                marginBottom: "0",
+              },
+
+              paddingLeft: {
+                xl: "84px",
+              },
+              paddingRight: {
+                xl: "48px",
+              },
+              paddingBottom: {
+                xl: "80px",
+              },
+
+              padding: {
+                xs: "10px",
+                xl: "unset",
+              },
             }}
           >
-            {data.listdata.title}
-          </Typography>
-          <ul className="mt-0 list-decimal">
-            {data.listdata.items.map((value, index) => {
-              return <li key={index}>{value}</li>;
-            })}
-          </ul>
-        </Box>
-      </Box>
-      <Box
-        sx={{
-          marginTop: {
-            xs: 0,
-            lg: "1rem",
-          },
-          fontWeight: "400",
-          fontSize: "20px",
-          lineHeight: "27px",
-          color: "#393939",
-          "& ul": {
-            margin: "0",
-          },
-          "& p": {
-            marginBottom: "0",
-          },
-
-          paddingLeft: {
-            xl: "84px",
-          },
-          paddingRight: {
-            xl: "48px",
-          },
-          paddingBottom: {
-            xl: "80px",
-          },
-        }}
-      >
-        <Product1MainText />
-      </Box>
+            <Product1MainText />
+          </Box>
+        </React.Fragment>
+      )}
     </Stack>
   );
 };
 
 const ProductionSection = () => {
-  const [value, setValue] = useState<"1" | "2" | "3">("1");
+  const [activeTab, setActiveTab] = useState<0 | 1 | 2>(0); // Изменено на числа
   const handleChange = (
     _event: React.SyntheticEvent,
-    newValue: "1" | "2" | "3",
+    newValue: number, // Изменено тип на number
   ) => {
-    setValue(newValue);
+    setActiveTab(newValue);
   };
 
   return (
@@ -181,33 +212,58 @@ const ProductionSection = () => {
       }}
       className="shadow"
     >
-      <TabContext value={value}>
-        <Box>
-          <TabList
-            onChange={handleChange}
-            sx={{
-              "& .MuiTabs-flexContainer": {
-                justifyContent: "flex-end",
+      {/* onChange={handleChange}
+          variant="scrollable"
+          scrollButtons="auto"
+          sx={{
+            "& .MuiTabs-flexContainer": {
+              justifyContent: {
+                xs: "flex-start",
+                md: "flex-end",
               },
-              msOverflowY: "hidden",
-            }}
-          >
-            {productionData.map((value, index) => {
-              return (
-                <TabItem key={index} label={value.tabTitle} value={value.id} />
-              );
-            })}
-          </TabList>
-        </Box>
+            },
+            width: "100%",
+          }} */}
+      <Tabs
+        value={activeTab}
+        onChange={handleChange}
+        variant="scrollable"
+        scrollButtons="auto"
+        aria-label="Production Tabs"
+        sx={{
+          "& .MuiTabs-flexContainer": {
+            justifyContent: {
+              xs: "flex-start",
+              md: "flex-end",
+            },
+          },
+          width: "100%",
+        }}
+      >
+        {productionData.map((item) => (
+          <TabItem
+            label={item.tabTitle}
+            key={item.id}
+            id={`production-tab-${item.id}`}
+            aria-controls={`production-tabpanel${item.id}`}
+          />
+        ))}
+      </Tabs>
 
-        {productionData.map((value, index) => {
-          return (
-            <TabPanel key={index} value={value.id}>
-              <ProductionPanel {...value} />
-            </TabPanel>
-          );
-        })}
-      </TabContext>
+      {productionData.map((value) => {
+        return (
+          <ProductionPanel
+            key={value.id}
+            description={value.description}
+            id={value.id}
+            img={value.img}
+            index={value.index}
+            listdata={value.listdata}
+            tabTitle={value.tabTitle}
+            value={activeTab}
+          />
+        );
+      })}
     </Box>
   );
 };

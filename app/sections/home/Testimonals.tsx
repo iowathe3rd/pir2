@@ -62,7 +62,7 @@ export default function Testimonials() {
         }}
       >
         {testimonials.map((value, index) => (
-          <Grid item key={`testimonials-${index}`} xs={1} xl={"auto"}>
+          <Grid item key={`testimonials-${index}`}>
             <QuickInfoCard key={index} title={value.title}>
               <img
                 src={value.iconPath}

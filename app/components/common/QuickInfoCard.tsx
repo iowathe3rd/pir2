@@ -30,19 +30,11 @@ const QuickInfoCard: React.FC<QuickInfoCardProps> = ({ title, children }) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          flexGrow: 1,
+          height: "70%",
         }}
       >
         {children}
       </Box>
-      <Box
-        sx={{
-          width: "80%",
-          backgroundColor: "#FFFFFF",
-          height: "2px",
-          marginX: "auto",
-        }}
-      />
       <Box
         sx={{
           backgroundColor: "#F29E20",
@@ -52,10 +44,12 @@ const QuickInfoCard: React.FC<QuickInfoCardProps> = ({ title, children }) => {
           justifyContent: "center",
           height: "30%",
           padding: "5px",
+          overflow: "hidden",
         }}
       >
         <Typography
           fontSize={{
+            xs: "14px",
             xl: "18px",
           }}
           fontWeight={400}
