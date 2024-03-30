@@ -128,7 +128,7 @@ const ProductionPanel = (data: productionTabProps & { value: 0 | 1 | 2 }) => {
                 },
                 marginTop: "50px",
                 fontWeight: "400",
-                fontSize: "20px",
+                fontSize: "22px",
                 lineHeight: "27px",
                 padding: {
                   xs: "10px",
@@ -138,8 +138,8 @@ const ProductionPanel = (data: productionTabProps & { value: 0 | 1 | 2 }) => {
             >
               <Typography
                 sx={{
+                  fontSize: "inherit",
                   fontWeight: "400",
-                  fontSize: "20px",
                   lineHeight: "27px",
                 }}
               >
@@ -160,7 +160,7 @@ const ProductionPanel = (data: productionTabProps & { value: 0 | 1 | 2 }) => {
               },
               fontWeight: "400",
               fontSize: "20px",
-              lineHeight: "27px",
+              lineHeight: "30px",
               color: "#393939",
               "& ul": {
                 margin: "0",
