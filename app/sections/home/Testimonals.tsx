@@ -38,7 +38,7 @@ export default function Testimonials() {
   return (
     <Box
       sx={{
-        width: "fit-content",
+        width: "100%",
         borderRadius: "20px",
         marginX: "auto",
         padding: {

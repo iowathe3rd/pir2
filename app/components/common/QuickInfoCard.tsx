@@ -12,11 +12,11 @@ const QuickInfoCard: React.FC<QuickInfoCardProps> = ({ title, children }) => {
       sx={{
         height: {
           xs: "150px",
-          xl: "190px",
+          xl: "220px",
         },
         width: {
           xs: "150px",
-          xl: "190px",
+          xl: "220px",
         },
         color: "#FFFFFF",
         backgroundColor: "#F9F9F9",
