@@ -1,5 +1,5 @@
 import { Box, Link, Stack, Typography, useMediaQuery } from "@mui/material";
-import Almaty from "~/assets/almaty.png";
+import Almaty from "~/assets/almaty.jpeg";
 import Location from "~/assets/location.svg";
 import { SectionTitle } from "~/components/common/SectionTitle";
 import { theme } from "~/lib/mui";
