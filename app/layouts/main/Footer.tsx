@@ -223,6 +223,7 @@ const Footer: React.FC = () => {
                 alignItems: "center",
                 justifyContent: "center",
                 gap: "13px",
+                textAlign: "center", // Added for text alignment
               }}
             >
               <Typography
