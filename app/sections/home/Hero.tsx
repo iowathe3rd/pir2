@@ -61,6 +61,7 @@ export default function Hero() {
           >
             <Stack
               sx={{
+                width: "100%",
                 position: "absolute",
                 top: "80px",
                 color: "#FFFFFF",
@@ -72,7 +73,6 @@ export default function Hero() {
                 sx={{
                   fontSize: {
                     xs: "36px",
-                    // xl: "36px",
                   },
                   lineHeight: {
                     xs: "35.1px",
@@ -80,12 +80,12 @@ export default function Hero() {
                   },
                   fontWeight: {
                     xs: 900,
-                    // xl: 900,
                   },
-                  width: "90%",
+                  width: "100%",
+                  whiteSpace: "pre-line",
                 }}
               >
-                ПОСТАВКА И МОНТАЖ УТЕПЛИТЕЛЯ ПИР
+                {"ПОСТАВКА И МОНТАЖ\nУТЕПЛИТЕЛЯ ПИР"}
               </Typography>
               <Typography
                 sx={{
