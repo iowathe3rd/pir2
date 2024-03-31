@@ -2,11 +2,13 @@ import { Box, Button, Toolbar, Typography, useMediaQuery } from "@mui/material";
 import logo from "~/assets/logo.png";
 import Container from "~/components/common/Container";
 import { useDrawerContext } from "~/context/DrawerContext";
+import { useModal } from "~/context/ModalContext";
 import { theme } from "~/lib/mui";
 import Menu from "./Menu";
 
 export default function Header() {
   const { toggleDrawer } = useDrawerContext();
+  const { openModal } = useModal();
   const isUpXl = useMediaQuery<typeof theme>((theme) =>
     theme.breakpoints.up("xl"),
   );
@@ -67,7 +69,12 @@ export default function Header() {
                 +7 (705) 575-60-75
               </Typography>
             </Button>
-            <Button size="large" color="primary" variant="contained">
+            <Button
+              size="large"
+              color="primary"
+              variant="contained"
+              onClick={() => openModal(<p>MOdalCONTen</p>)}
+            >
               Заказать теплорасчет
             </Button>
           </Box>

@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import React, { PropsWithChildren } from "react";
 import { DrawerProvider } from "~/context/DrawerContext";
+import { ModalProvider } from "~/context/ModalContext";
 import Footer from "./Footer";
 import Header from "./Header";
 const drawerWidth = 240;
@@ -63,9 +64,11 @@ const DrawerAppBar: React.FC<PropsWithChildren> = ({ children }) => {
 
 const MainLayout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
-    <DrawerProvider>
-      <DrawerAppBar>{children}</DrawerAppBar>
-    </DrawerProvider>
+    <ModalProvider>
+      <DrawerProvider>
+        <DrawerAppBar>{children}</DrawerAppBar>
+      </DrawerProvider>
+    </ModalProvider>
   );
 };
 
