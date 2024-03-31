@@ -17,6 +17,7 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import { loadMapScript } from "./lib/ymaps";
 interface DocumentProps {
   children: React.ReactNode;
   title?: string;
@@ -32,6 +33,10 @@ export const headers: HeadersFunction = () => ({
 });
 
 const DocumentWithoutEmotion = ({ children, title }: DocumentProps) => {
+  React.useEffect(() => {
+    loadMapScript();
+  }, []);
+
   return (
     <html lang="en">
       <head>
@@ -46,12 +51,18 @@ const DocumentWithoutEmotion = ({ children, title }: DocumentProps) => {
           name="emotion-insertion-point"
           content="emotion-insertion-point"
         />
+
+        <script
+          async
+          src="https://api-maps.yandex.ru/v3/?apikey=9a70cddc-5c9f-4484-84ee-eaea17bf4622&lang=ru_RU"
+        ></script>
       </head>
       <body>
         <ThemeProvider theme={theme}>
           <Layout>{children}</Layout>
         </ThemeProvider>
         <ScrollRestoration />
+
         <Scripts />
       </body>
     </html>

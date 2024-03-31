@@ -49,7 +49,6 @@ export default function Testimonials() {
       className="shadow"
     >
       <Grid
-        spacing={{ xs: 1, xl: 2 }}
         container
         columns={{ xs: 2, lg: 6, xl: 12 }}
         sx={{
@@ -59,6 +58,10 @@ export default function Testimonials() {
           },
           width: "100%",
           placeContent: "space-between",
+          gap: {
+            xs: "5px",
+            xl: "20px",
+          },
         }}
       >
         {testimonials.map((value, index) => (

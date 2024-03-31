@@ -1,36 +1,35 @@
 import { Box, Link, Stack, Typography, useMediaQuery } from "@mui/material";
-import Almaty from "~/assets/almaty.jpeg";
-import Location from "~/assets/location.svg";
+import { useEffect, useRef, useState } from "react";
+
 import { SectionTitle } from "~/components/common/SectionTitle";
 import { theme } from "~/lib/mui";
+import { createMap, loadMapScript } from "~/lib/ymaps";
+
+const isBrowser = typeof window !== "undefined"; // Проверка, исполняется ли код в браузере
 
 const ContactUs: React.FC = () => {
+  const mapContainerRef = useRef(null); // Для доступа к DOM-элементу, в котором будет отображаться карта
+  const [isScriptLoaded, setIsScriptLoaded] = useState<boolean>(false); // Для отслеживания загрузки скрипта
+  const [isMapRendered, setIsMapRendered] = useState<boolean>(false);
+  useEffect(() => {
+    if (!isBrowser && isMapRendered && isScriptLoaded) {
+      return; // Если код не на клиенте, ничего не делаем
+    }
+    // Начать загрузку скрипта Яндекс.Карт и создать карту после успешной загрузки
+    loadMapScript()
+      .then(() => {
+        setIsScriptLoaded(true);
+        createMap().then(() => {
+          setIsMapRendered(true);
+        });
+      })
+      .catch((error) =>
+        console.error("Cannot load Yandex Maps script:", error),
+      );
+  }, [isScriptLoaded, isMapRendered]);
   const isUpLg = useMediaQuery<typeof theme>((theme) =>
     theme.breakpoints.up("lg"),
   );
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     const scriptSrc =
-  //       "https:api-maps.yandex.ru/v3/?apikey=9a70cddc-5c9f-4484-84ee-eaea17bf4622&lang=ru_RU";
-
-  //     loadScript(scriptSrc).then(() => {
-  //       // Здесь ваш код, который работает с API Яндекс.Карт
-  //       // Например, инициализация карты:
-  //       window.ymaps.ready.then(() => {
-  //         // HTML-элемент.
-  //         const map = new window.ymaps.YMap(
-  //           document.getElementById("first_map"),
-  //           {
-  //             location: {
-  //               center: [37.588144, 55.733842],
-  //               zoom: 10,
-  //             },
-  //           },
-  //         );
-  //       });
-  //     });
-  //   }
-  // }, []);
   return (
     <Box
       sx={{
@@ -99,28 +98,9 @@ const ContactUs: React.FC = () => {
             borderRadius: "15px",
             position: "relative",
           }}
+          ref={mapContainerRef}
           id={"footer-map"}
-        >
-          <img
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              borderRadius: "20px",
-            }}
-            alt="almaty map"
-            src={Almaty}
-          />
-          <img
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-            }}
-            alt="location mark"
-            src={Location}
-          />
-        </Box>
+        ></Box>
       </Link>
     </Box>
   );

@@ -21,6 +21,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       plugins: image(),
+      external: ["ymaps3"],
     },
   },
 });
