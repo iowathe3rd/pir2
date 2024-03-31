@@ -9,20 +9,15 @@ import {
   Typography,
 } from "@mui/material";
 import React, { PropsWithChildren } from "react";
+import { DrawerProvider } from "~/context/DrawerContext";
 import Footer from "./Footer";
 import Header from "./Header";
 const drawerWidth = 240;
 const navItems = ["Home", "About", "Contact"];
 
 const DrawerAppBar: React.FC<PropsWithChildren> = ({ children }) => {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
-  };
-
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
         MUI
       </Typography>
@@ -46,8 +41,6 @@ const DrawerAppBar: React.FC<PropsWithChildren> = ({ children }) => {
       <nav>
         <Drawer
           variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
           }}
@@ -70,9 +63,9 @@ const DrawerAppBar: React.FC<PropsWithChildren> = ({ children }) => {
 
 const MainLayout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
-    <React.Fragment>
+    <DrawerProvider>
       <DrawerAppBar>{children}</DrawerAppBar>
-    </React.Fragment>
+    </DrawerProvider>
   );
 };
 

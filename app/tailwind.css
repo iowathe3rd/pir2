@@ -8,6 +8,13 @@
     font-style: normal;
 }
 
+@layer components {
+    .link {
+        text-decoration: none !important;
+        @apply text-black;
+    }
+}
+
 body {
     font-family: Inter;
 }
@@ -28,4 +35,20 @@ table {
 
 .shadow {
     box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.08);
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
 }

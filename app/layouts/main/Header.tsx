@@ -1,7 +1,15 @@
-import { Box, Button, Toolbar, Typography } from "@mui/material";
+import { Box, Button, Toolbar, Typography, useMediaQuery } from "@mui/material";
 import logo from "~/assets/logo.png";
 import Container from "~/components/common/Container";
+import { useDrawerContext } from "~/context/DrawerContext";
+import { theme } from "~/lib/mui";
+import Menu from "./Menu";
+
 export default function Header() {
+  const { toggleDrawer } = useDrawerContext();
+  const isUpXl = useMediaQuery<typeof theme>((theme) =>
+    theme.breakpoints.up("xl"),
+  );
   return (
     <Toolbar
       component="nav"
@@ -45,29 +53,43 @@ export default function Header() {
             нового полколения ПИР
           </Typography>
         </Box>
-        <Box
-          sx={{
-            display: {
-              xs: "none",
-              lg: "flex",
-            },
-            justifyContent: "flex-end",
-            alignItems: "center",
-            gap: {
-              xs: "10px",
-              lg: "26px",
-            },
-          }}
-        >
-          <Button size="large">
-            <Typography fontWeight="500" fontSize="20px">
-              +7 (705) 575-60-75
-            </Typography>
+        {isUpXl ? (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "center",
+              gap: "26px",
+            }}
+          >
+            <Button size="large">
+              <Typography fontWeight="500" fontSize="20px">
+                +7 (705) 575-60-75
+              </Typography>
+            </Button>
+            <Button size="large" color="primary" variant="contained">
+              Заказать теплорасчет
+            </Button>
+          </Box>
+        ) : (
+          <Button color="primary" onClick={() => toggleDrawer()}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="h-10 w-10"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
           </Button>
-          <Button size="large" color="primary" variant="contained">
-            Заказать теплорасчет
-          </Button>
-        </Box>
+        )}
+        <Menu />
       </Container>
     </Toolbar>
   );
