@@ -83,17 +83,5 @@ export const footer: footerI = {
       alt: "Youtube",
       title: "Youtube",
     },
-    {
-      src: vk,
-      href: "https://www.youtube.com/@abbex2289",
-      alt: "vk",
-      title: "Vk",
-    },
-    {
-      src: telegram,
-      href: "https://www.youtube.com/@abbex2289",
-      alt: "telegram",
-      title: "Telegram",
-    },
   ],
 };

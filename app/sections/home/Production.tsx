@@ -210,8 +210,6 @@ const ProductionSection = () => {
         marginTop: "-60px",
         background: "white",
         zIndex: 5,
-
-        overflowX: "scroll",
       }}
       className="shadow"
     >

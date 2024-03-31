@@ -1,32 +1,34 @@
 import { Box, Link, Stack, Typography, useMediaQuery } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
-
+// import { useEffect, useRef, useState } from "react";
+//
+import Almaty from "~/assets/almaty.jpeg";
+import Location from "~/assets/location.svg";
 import { SectionTitle } from "~/components/common/SectionTitle";
 import { theme } from "~/lib/mui";
-import { createMap, loadMapScript } from "~/lib/ymaps";
+// import { createMap, loadMapScript } from "~/lib/ymaps";
 
-const isBrowser = typeof window !== "undefined"; // Проверка, исполняется ли код в браузере
+// const isBrowser = typeof window !== "undefined"; // Проверка, исполняется ли код в браузере
 
 const ContactUs: React.FC = () => {
-  const mapContainerRef = useRef(null); // Для доступа к DOM-элементу, в котором будет отображаться карта
-  const [isScriptLoaded, setIsScriptLoaded] = useState<boolean>(false); // Для отслеживания загрузки скрипта
-  const [isMapRendered, setIsMapRendered] = useState<boolean>(false);
-  useEffect(() => {
-    if (!isBrowser && isMapRendered && isScriptLoaded) {
-      return; // Если код не на клиенте, ничего не делаем
-    }
-    // Начать загрузку скрипта Яндекс.Карт и создать карту после успешной загрузки
-    loadMapScript()
-      .then(() => {
-        setIsScriptLoaded(true);
-        createMap().then(() => {
-          setIsMapRendered(true);
-        });
-      })
-      .catch((error) =>
-        console.error("Cannot load Yandex Maps script:", error),
-      );
-  }, [isScriptLoaded, isMapRendered]);
+  // const mapContainerRef = useRef(null); // Для доступа к DOM-элементу, в котором будет отображаться карта
+  // const [isScriptLoaded, setIsScriptLoaded] = useState<boolean>(false); // Для отслеживания загрузки скрипта
+  // const [isMapRendered, setIsMapRendered] = useState<boolean>(false);
+  // useEffect(() => {
+  //   if (!isBrowser && isMapRendered && isScriptLoaded) {
+  //     return; // Если код не на клиенте, ничего не делаем
+  //   }
+  //   // Начать загрузку скрипта Яндекс.Карт и создать карту после успешной загрузки
+  //   loadMapScript()
+  //     .then(() => {
+  //       setIsScriptLoaded(true);
+  //       createMap().then(() => {
+  //         setIsMapRendered(true);
+  //       });
+  //     })
+  //     .catch((error) =>
+  //       console.error("Cannot load Yandex Maps script:", error),
+  //     );
+  // }, [isScriptLoaded, isMapRendered]);
   const isUpLg = useMediaQuery<typeof theme>((theme) =>
     theme.breakpoints.up("lg"),
   );
@@ -91,16 +93,25 @@ const ContactUs: React.FC = () => {
         }
         target="_blank"
       >
-        <Box
-          sx={{
+        <img
+          style={{
             width: "100%",
-            height: "360px",
-            borderRadius: "15px",
-            position: "relative",
+            height: "100%",
+            objectFit: "cover",
+            borderRadius: "20px",
           }}
-          ref={mapContainerRef}
-          id={"footer-map"}
-        ></Box>
+          alt="almaty map"
+          src={Almaty}
+        />
+        <img
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+          }}
+          alt="location mark"
+          src={Location}
+        />
       </Link>
     </Box>
   );
