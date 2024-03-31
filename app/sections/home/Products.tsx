@@ -137,8 +137,7 @@ const ProductCard = () => {
               },
               fontWeight: "700",
               height: {
-                xs: "70px",
-                md: "90px",
+                xs: "60px",
               },
               overflow: "hidden",
             }}

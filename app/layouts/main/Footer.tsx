@@ -239,8 +239,9 @@ const Footer: React.FC = () => {
                 sx={{
                   width: {
                     xs: "100%",
-                    xl: "calc(100% + 10%)",
+                    xl: "calc(100% + 20%)",
                   },
+                  fontSize: "20px",
                 }}
               >
                 Заказать звонок
