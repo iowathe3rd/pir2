@@ -11,6 +11,7 @@ import {
 import React, { PropsWithChildren } from "react";
 import { DrawerProvider } from "~/context/DrawerContext";
 import { ModalProvider } from "~/context/ModalContext";
+import { TabProvider } from "~/context/TabContext";
 import Footer from "./Footer";
 import Header from "./Header";
 const drawerWidth = 240;
@@ -65,9 +66,11 @@ const DrawerAppBar: React.FC<PropsWithChildren> = ({ children }) => {
 const MainLayout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <ModalProvider>
-      <DrawerProvider>
-        <DrawerAppBar>{children}</DrawerAppBar>
-      </DrawerProvider>
+      <TabProvider>
+        <DrawerProvider>
+          <DrawerAppBar>{children}</DrawerAppBar>
+        </DrawerProvider>
+      </TabProvider>
     </ModalProvider>
   );
 };

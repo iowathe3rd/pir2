@@ -1,11 +1,12 @@
 import { Box, Stack, Tabs, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import Slide1 from "~/assets/slide1.jpg";
 import Slide2 from "~/assets/slide2.jpg";
 import Slide3 from "~/assets/slide3.jpg";
 import TabItem from "~/components/common/TabItem";
 
 import Product1MainText from "~/content/hero/product1.main.md";
+import { useTabs } from "~/context/TabContext";
 
 export type productionTabProps = {
   id: string;
@@ -194,12 +195,13 @@ const ProductionPanel = (data: productionTabProps & { value: 0 | 1 | 2 }) => {
 };
 
 const ProductionSection = () => {
-  const [activeTab, setActiveTab] = useState<0 | 1 | 2>(0); // Изменено на числа
+  const { activeTab, handleChangeTab } = useTabs();
   const handleChange = (
     _event: React.SyntheticEvent,
     newValue: number, // Изменено тип на number
   ) => {
-    setActiveTab(newValue);
+    handleChangeTab(newValue);
+    window.location.hash = `tab-${newValue}`;
   };
 
   return (
@@ -212,19 +214,8 @@ const ProductionSection = () => {
         zIndex: 5,
       }}
       className="shadow"
+      id="production-section"
     >
-      {/* onChange={handleChange}
-          variant="scrollable"
-          scrollButtons="auto"
-          sx={{
-            "& .MuiTabs-flexContainer": {
-              justifyContent: {
-                xs: "flex-start",
-                md: "flex-end",
-              },
-            },
-            width: "100%",
-          }} */}
       <Tabs
         value={activeTab}
         onChange={handleChange}
