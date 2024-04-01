@@ -30,7 +30,7 @@ const FeedBackModalContent = () => {
         >
           Заказать звонок
         </Button>
-        <Typography variant="subtitle1">
+        <Typography variant="subtitle1" textAlign={"center"}>
           Нажимая на кнопку, вы соглашаетесь с{" "}
           <Link to={""}>условиями обработки персональных данных</Link>
         </Typography>

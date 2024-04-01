@@ -1,6 +1,8 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import ProductImage from "~/assets/product.png";
 import Price from "~/components/common/Price";
+import FeedBackModalContent from "~/components/modals/FeedBack";
+import { useModal } from "~/context/ModalContext";
 
 const product = {
   image: ProductImage,
@@ -14,6 +16,7 @@ const product = {
 };
 
 const ProductCard = () => {
+  const { openModal } = useModal();
   return (
     <Box
       sx={{
@@ -128,6 +131,7 @@ const ProductCard = () => {
             oldPrice={product.price.oldPrice}
           />
           <Button
+            onClick={() => openModal(<FeedBackModalContent />)}
             color="primary"
             variant="contained"
             sx={{
