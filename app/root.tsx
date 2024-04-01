@@ -17,6 +17,7 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import Modal from "./components/common/Modal";
 import { loadMapScript } from "./lib/ymaps";
 interface DocumentProps {
   children: React.ReactNode;
@@ -59,7 +60,10 @@ const DocumentWithoutEmotion = ({ children, title }: DocumentProps) => {
       </head>
       <body>
         <ThemeProvider theme={theme}>
-          <Layout>{children}</Layout>
+          <Layout>
+            {children}
+            <Modal />
+          </Layout>
         </ThemeProvider>
         <ScrollRestoration />
 

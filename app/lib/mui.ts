@@ -69,4 +69,55 @@ export const theme = createTheme({
       },
     },
   },
+  MuiOutlinedInput: {
+    styleOverrides: {
+      root: () => ({
+        "& label.Mui-focused": {
+          color: "#A0AAB4",
+        },
+        "&.MuiInput-underline:after": {
+          borderBottomColor: "#B2BAC2",
+        },
+        "&.MuiOutlinedInput-root": {
+          borderRadius: "10px",
+          "& fieldset": {
+            borderColor: "#ABABAB",
+          },
+          "&:hover fieldset": {
+            borderColor: "#B2BAC2",
+          },
+          "&.Mui-focused fieldset, &:hover fieldset, &.Mui-focused:hover fieldset":
+            {
+              border: "2px solid #1A8ED5",
+            },
+        },
+      }),
+    },
+  },
+  MuiTextField: {
+    styleOverrides: {
+      root: ({ ownerState }) => ({
+        "& label.Mui-focused": {
+          color: "#A0AAB4",
+        },
+        "& .MuiInput-underline:after": {
+          borderBottomColor: "#B2BAC2",
+        },
+        "& .MuiOutlinedInput-root": {
+          "& fieldset": {
+            borderColor: "#ABABAB",
+          },
+          "&:hover fieldset": {
+            borderColor: "#B2BAC2",
+          },
+          "&.Mui-focused fieldset": {
+            borderColor: "#6F7E8C",
+          },
+        },
+        "& .MuiInputBase-root": {
+          borderRadius: "10px",
+        },
+      }),
+    },
+  },
 });

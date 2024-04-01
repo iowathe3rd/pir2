@@ -1,25 +1,39 @@
-import ReactDOM from "react-dom";
+import { Box, Modal as MuiModal } from "@mui/material";
+import src from "node_modules/@emotion/styled/dist/declarations/src";
 import { useModal } from "~/context/ModalContext";
 
 const Modal = () => {
   const { isOpen, closeModal, modalContent } = useModal();
 
-  return isOpen
-    ? ReactDOM.createPortal(
-        <div className="absolute inset-0 left-[50%] top-[50%] z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="relative rounded bg-white p-6 text-black shadow-lg">
-            <button
-              className="absolute right-0 top-0 mr-4 mt-4"
-              onClick={closeModal}
-            >
-              &times;
-            </button>
-            {modalContent}
-          </div>
-        </div>,
-        document.body,
-      )
-    : null;
+  const sx = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: {
+      xs: "100%",
+      md: "50%",
+      lg: "40%",
+      xl: "30%",
+    },
+    backgroundColor: "white",
+    p: 4,
+    borderRadius: "15px",
+  };
+
+  return (
+    <MuiModal
+      open={isOpen}
+      onClose={closeModal}
+      aria-labelledby="modal-title"
+      aria-describedby="modal-description"
+    >
+      <Box sx={sx} className="shadow">
+        {/* Убедитесь, что ваш modalContent поддерживает атрибуты id, если они необходимы для доступности. */}
+        {modalContent}
+      </Box>
+    </MuiModal>
+  );
 };
 
 export default Modal;

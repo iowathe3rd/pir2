@@ -1,6 +1,7 @@
 import { Box, Button, Toolbar, Typography, useMediaQuery } from "@mui/material";
 import logo from "~/assets/logo.png";
 import Container from "~/components/common/Container";
+import FeedBackModalContent from "~/components/modals/FeedBack";
 import { useDrawerContext } from "~/context/DrawerContext";
 import { useModal } from "~/context/ModalContext";
 import { theme } from "~/lib/mui";
@@ -73,7 +74,7 @@ export default function Header() {
               size="large"
               color="primary"
               variant="contained"
-              onClick={() => openModal(<p>MOdalCONTen</p>)}
+              onClick={() => openModal(<FeedBackModalContent />)}
             >
               Заказать теплорасчет
             </Button>
