@@ -1,12 +1,15 @@
-import { ThemeProvider } from "@mui/material";
+import { ThemeProvider, Typography } from "@mui/material";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { HeadersFunction, LinksFunction } from "@remix-run/node";
 import {
+  Link,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  isRouteErrorResponse,
+  useRouteError,
 } from "@remix-run/react";
 import * as React from "react";
 import { default as Layout } from "./layouts/main/MainLayout";
@@ -17,6 +20,7 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import Button from "./components/common/Button";
 import Modal from "./components/common/Modal";
 import { loadMapScript } from "./lib/ymaps";
 interface DocumentProps {
@@ -81,21 +85,35 @@ export default function App() {
 }
 
 // https://remix.run/docs/en/v1/api/conventions#errorboundary
-export function ErrorBoundary({ error }: { error: Error }) {
-  console.error(error);
+export function ErrorBoundary() {
+  const error = useRouteError();
 
   return (
     <DocumentWithoutEmotion title="Error!">
-      <div>
-        <h1>There was an error</h1>
-        <p>{String(error)}</p>
-        <hr />
-        <p>
-          Hey, developer, you should replace this with what you want your users
-          to see.
-        </p>
-      </div>
-      s
+      <main className="grid h-[60vh] min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
+        <div className="text-center">
+          <Typography color="primary" variant="subtitle1">
+            {isRouteErrorResponse(error) && error.status}
+          </Typography>
+          <Typography variant="h2" fontWeight={800}>
+            {isRouteErrorResponse(error) && `${error.statusText}`}
+          </Typography>
+          <Typography fontSize={"20px"}>Что то пошло не так!</Typography>
+          <div className="mt-10 flex items-center justify-center gap-x-6">
+            <Button
+              variant="contained"
+              color="primary"
+              LinkComponent={Link}
+              href="/"
+              sx={{
+                borderRadius: "15px",
+              }}
+            >
+              На главную
+            </Button>
+          </div>
+        </div>
+      </main>
     </DocumentWithoutEmotion>
   );
 }

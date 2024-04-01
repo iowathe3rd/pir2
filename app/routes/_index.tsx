@@ -1,5 +1,5 @@
 import { Box, Container } from "@mui/material";
-import type { MetaFunction } from "@remix-run/node";
+import { json, type LoaderFunction, type MetaFunction } from "@remix-run/node";
 import AboutMaterial from "~/sections/home/AboutMaterial";
 import ContactUs from "~/sections/home/ContactUs";
 import Hero from "~/sections/home/Hero";
