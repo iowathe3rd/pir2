@@ -40,7 +40,8 @@ const ContactUs: React.FC = () => {
           xs: "column",
           lg: "row",
         },
-        marginY: "35px",
+        marginTop: "35px",
+        marginBottom: "15px",
         padding: 0,
       }}
     >
