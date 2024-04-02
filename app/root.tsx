@@ -1,4 +1,8 @@
-import { ThemeProvider, Typography } from "@mui/material";
+import {
+  ThemeProvider,
+  Typography,
+  unstable_useEnhancedEffect as useEnhancedEffect,
+} from "@mui/material";
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { HeadersFunction, LinksFunction } from "@remix-run/node";
 import {
@@ -11,7 +15,13 @@ import {
   isRouteErrorResponse,
   useRouteError,
 } from "@remix-run/react";
+
 import * as React from "react";
+import Button from "./components/common/Button";
+import Modal from "./components/common/Modal";
+
+import { withEmotionCache } from "@emotion/react";
+import ClientStyleContext from "./context/ClientStyleContext";
 import { default as Layout } from "./layouts/main/MainLayout";
 import { theme } from "./lib/mui";
 import Styles from "./tailwind.css?url";
@@ -20,9 +30,7 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import Button from "./components/common/Button";
-import Modal from "./components/common/Modal";
-import { loadMapScript } from "./lib/ymaps";
+
 interface DocumentProps {
   children: React.ReactNode;
   title?: string;
@@ -37,59 +45,66 @@ export const headers: HeadersFunction = () => ({
   "X-Robots-Tag": "noindex",
 });
 
-const DocumentWithoutEmotion = ({ children, title }: DocumentProps) => {
-  React.useEffect(() => {
-    loadMapScript();
-  }, []);
+const Document = withEmotionCache(
+  ({ children, title }: DocumentProps, emotionCache) => {
+    const clientStyleData = React.useContext(ClientStyleContext);
 
-  return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <meta name="robots" content="noindex, nofollow" />
-        <meta name="theme-color" content={theme.palette.primary.main} />
-        {title ? <title>{title}</title> : null}
-        <Meta />
-        <Links />
-        <meta
-          name="emotion-insertion-point"
-          content="emotion-insertion-point"
-        />
+    // Only executed on client
+    useEnhancedEffect(() => {
+      // re-link sheet container
+      emotionCache.sheet.container = document.head;
+      // re-inject tags
+      const tags = emotionCache.sheet.tags;
+      emotionCache.sheet.flush();
+      tags.forEach((tag) => {
+        (emotionCache.sheet as any)._insertTag(tag);
+      });
+      clientStyleData.reset();
+    }, []);
 
-        <script
-          async
-          src="https://api-maps.yandex.ru/v3/?apikey=9a70cddc-5c9f-4484-84ee-eaea17bf4622&lang=ru_RU"
-        ></script>
-      </head>
-      <body>
-        <ThemeProvider theme={theme}>
-          <Layout>
-            {children}
-            <Modal />
-          </Layout>
-        </ThemeProvider>
-        <ScrollRestoration />
+    return (
+      <html lang="en">
+        <head>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width,initial-scale=1" />
+          <meta name="robots" content="noindex, nofollow" />
+          <meta name="theme-color" content={theme.palette.primary.main} />
+          {title ? <title>{title}</title> : null}
+          <Meta />
+          <Links />
+          <meta
+            name="emotion-insertion-point"
+            content="emotion-insertion-point"
+          />
+        </head>
+        <body>
+          <ThemeProvider theme={theme}>
+            <Layout>
+              {children}
+              <Modal />
+            </Layout>
+          </ThemeProvider>
+          <ScrollRestoration />
+          <Scripts />
+        </body>
+      </html>
+    );
+  },
+);
 
-        <Scripts />
-      </body>
-    </html>
-  );
-};
 export default function App() {
   return (
-    <DocumentWithoutEmotion>
+    <Document>
       <Outlet />
-    </DocumentWithoutEmotion>
+    </Document>
   );
 }
 
-// https://remix.run/docs/en/v1/api/conventions#errorboundary
 export function ErrorBoundary() {
   const error = useRouteError();
 
   return (
-    <DocumentWithoutEmotion title="Error!">
+    <Document title="Error!">
       <main className="grid h-[60vh] min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
         <div className="text-center">
           <Typography color="primary" variant="subtitle1">
@@ -114,6 +129,6 @@ export function ErrorBoundary() {
           </div>
         </div>
       </main>
-    </DocumentWithoutEmotion>
+    </Document>
   );
 }
