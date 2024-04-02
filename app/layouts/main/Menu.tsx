@@ -1,8 +1,11 @@
-import { Box, Button, Typography } from "@mui/material";
-import { pink } from "@mui/material/colors";
+import { Box, Button, Container, Toolbar, Typography } from "@mui/material";
+import logo from "~/assets/logo.png";
+
 import { Link } from "@remix-run/react";
 import React from "react";
+import FeedBackModalContent from "~/components/modals/FeedBack";
 import { useDrawerContext } from "~/context/DrawerContext";
+import { useModal } from "~/context/ModalContext";
 import { useTabs } from "~/context/TabContext";
 
 const buttons = [
@@ -16,22 +19,26 @@ const phones = ["+7 (771) 741-18-77", "+7 (727) 328-80-81"];
 const Menu: React.FC = () => {
   const { handleChangeTab } = useTabs();
   const { isDrawerOpen, toggleDrawer } = useDrawerContext();
+  const { openModal } = useModal();
+
+  const scrollToElement = (id: number) => {
+    // Используем setTimeout для обеспечения задержки перед прокруткой
+    setTimeout(() => {
+      // Ищем элемент по id
+      const element = document.getElementById(`production-tabpanel-${id}`);
+
+      // Проверяем, что элемент существует
+      if (element) {
+        // Используем метод scrollIntoView для прокрутки к элементу
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100); // Примерное время ожидания в миллисекундах
+  };
 
   const handleAnchorClick = (value: number) => {
     handleChangeTab(value);
+    scrollToElement(value);
     toggleDrawer();
-    scrollToElement();
-  };
-
-  const scrollToElement = () => {
-    // Ищем элемент по id
-    const element = document.getElementById("production-section");
-
-    // Проверяем, что элемент существует
-    if (element) {
-      // Используем метод scrollIntoView для прокрутки к элементу
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
   };
 
   const anchors = [
@@ -39,11 +46,12 @@ const Menu: React.FC = () => {
     { title: "Бетон", onClick: () => handleAnchorClick(1) },
     { title: "П-образные плиты", onClick: () => handleAnchorClick(2) },
   ];
+
   return (
     <Box
       sx={{
-        position: "absolute",
-        top: "120px",
+        position: "fixed",
+        top: "0",
         left: "0",
         display: isDrawerOpen ? "flex" : "none",
         width: "100vw",
@@ -55,6 +63,43 @@ const Menu: React.FC = () => {
         color: "black",
       }}
     >
+      <Toolbar
+        sx={{
+          backgroundColor: "white",
+          height: "120px",
+          width: "100%",
+        }}
+      >
+        <Container
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: {
+              xs: "15px",
+              lg: "30px",
+            },
+          }}
+        >
+          <img src={logo} alt="logo" width={230} />
+          <Button color="primary" onClick={() => toggleDrawer()}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="h-10 w-10"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          </Button>
+        </Container>
+      </Toolbar>
       <Box
         sx={{
           paddingY: "20px",
@@ -120,6 +165,7 @@ const Menu: React.FC = () => {
           color="primary"
           variant="contained"
           sx={{ borderRadius: "10px", marginBottom: "30px" }}
+          onClick={() => openModal(<FeedBackModalContent />)}
         >
           ОСТАВИТЬ ЗАЯВКУ
         </Button>
@@ -135,7 +181,9 @@ const Menu: React.FC = () => {
             </Link>
           );
         })}
-        <Button>Получить обратный звонок</Button>
+        <Button onClick={() => openModal(<FeedBackModalContent />)}>
+          Получить обратный звонок
+        </Button>
         <div className="mx-auto w-16 border border-[#DEDEDE]"></div>
       </Box>
     </Box>

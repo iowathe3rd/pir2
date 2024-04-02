@@ -214,7 +214,6 @@ const ProductionSection = () => {
         zIndex: 5,
       }}
       className="shadow"
-      id="production-section"
     >
       <Tabs
         value={activeTab}

@@ -12,6 +12,8 @@ import { Link } from "@remix-run/react";
 import React from "react";
 import Container from "~/components/common/Container";
 import Logo from "~/components/common/Logo";
+import FeedBackModalContent from "~/components/modals/FeedBack";
+import { useModal } from "~/context/ModalContext";
 
 import { footer as data } from "~/data";
 
@@ -163,6 +165,7 @@ function SocialIcons() {
 
 // Компонент футера
 const Footer: React.FC = () => {
+  const { openModal } = useModal();
   return (
     <Box sx={{ backgroundColor: "#EEE" }}>
       <Container
@@ -243,6 +246,7 @@ const Footer: React.FC = () => {
                   },
                   fontSize: "20px",
                 }}
+                onClick={() => openModal(<FeedBackModalContent />)}
               >
                 Заказать звонок
               </Button>
