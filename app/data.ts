@@ -1,7 +1,5 @@
 import instagram from "~/assets/icons/instagram.svg";
-import telegram from "~/assets/icons/telegram.svg";
 import tiktok from "~/assets/icons/tiktok.svg";
-import vk from "~/assets/icons/vk.svg";
 import whatsapp from "~/assets/icons/whatsapp.svg";
 import youtube from "~/assets/icons/youtube.svg";
 

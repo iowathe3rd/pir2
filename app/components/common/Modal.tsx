@@ -1,5 +1,4 @@
 import { Box, Modal as MuiModal } from "@mui/material";
-import src from "node_modules/@emotion/styled/dist/declarations/src";
 import { useModal } from "~/context/ModalContext";
 
 const Modal = () => {
