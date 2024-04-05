@@ -1,7 +1,7 @@
 import { Box, Link, Stack, Typography, useMediaQuery } from "@mui/material";
 // import { useEffect, useRef, useState } from "react";
 //
-import Almaty from "~/assets/almaty.jpeg";
+import Almaty from "~/assets/almaty.webp";
 import Location from "~/assets/location.svg";
 import { SectionTitle } from "~/components/common/SectionTitle";
 import { theme } from "~/lib/mui";
